@@ -6,9 +6,9 @@ Official website and portfolio for Arko MKT, a digital marketing and AI agency b
 
 - Next.js 16.1.1, React 19.2.3, TypeScript 5.9
 - Tailwind CSS 4.1
-- Framer Motion (to be installed)
-- next-intl (to be installed)
-- MDX for blog and project content
+- Framer Motion 12.23
+- next-intl 4.6
+- MDX 3.1 (@mdx-js/loader, @mdx-js/react, @next/mdx)
 - Deployment to Vercel
 
 ## File Structure
