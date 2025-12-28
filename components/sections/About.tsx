@@ -21,12 +21,15 @@ export default function About() {
                     </motion.h2>
                     <motion.p
                         className="text-xl leading-relaxed text-gray-mid mb-10"
-                        dangerouslySetInnerHTML={{ __html: t("content") }}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                    />
+                    >
+                        {t.rich("content", {
+                            b: (chunks) => <b>{chunks}</b>,
+                        })}
+                    </motion.p>
                     <motion.button
                         className="bg-foreground text-background px-8 py-3 rounded-full font-medium"
                         initial={{ opacity: 0, y: 20 }}

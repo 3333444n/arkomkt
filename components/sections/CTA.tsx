@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function CTA() {
     const t = useTranslations("CTA");
@@ -17,9 +18,9 @@ export default function CTA() {
                     className="max-w-3xl mx-auto"
                 >
                     <h2 className="text-4xl md:text-6xl font-serif mb-8">{t("title")}</h2>
-                    <button className="bg-foreground text-background px-12 py-4 rounded-full font-bold text-lg hover:shadow-xl transition-shadow">
+                    <Link href="/contacto" className="bg-foreground text-background px-12 py-4 rounded-full font-bold text-lg hover:shadow-xl transition-shadow">
                         {t("button")}
-                    </button>
+                    </Link>
                 </motion.div>
             </div>
         </section>

@@ -159,6 +159,8 @@ Main page sections use **JSON with HTML strings** to support formatting (bold, i
 
 ### Rendering HTML Content
 
+While `dangerouslySetInnerHTML` can be used for raw HTML, the preferred and safer method with **next-intl** is using `t.rich()`. This avoids common `FORMATTING_ERROR` and `UNCLOSED_TAG` issues.
+
 ```tsx
 import { useTranslations } from 'next-intl';
 
@@ -167,14 +169,23 @@ function HeroSection() {
   
   return (
     <section>
-      <h1 dangerouslySetInnerHTML={{ __html: t('title') }} />
-      <p dangerouslySetInnerHTML={{ __html: t('subtitle') }} />
+      <h1>
+        {t.rich('title', {
+          b: (chunks) => <b>{chunks}</b>,
+          br: () => <br />
+        })}
+      </h1>
+      <p>
+        {t.rich('subtitle', {
+          br: () => <br />
+        })}
+      </p>
     </section>
   );
 }
 ```
 
-**Security Note**: Only use `dangerouslySetInnerHTML` with trusted content (your own translations). Never use with user-generated content.
+**Security Note**: Use `t.rich()` to safely map tags to React components. Only use `dangerouslySetInnerHTML` if absolutely necessary and with trusted content.
 
 ## Adding New Content
 
