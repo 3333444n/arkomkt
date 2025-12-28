@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/config";
 import { motion } from "framer-motion";
 
 export default function Navbar() {
@@ -9,13 +10,13 @@ export default function Navbar() {
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
             <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-                <div className="text-xl font-bold">Arko MKT</div>
+                <Link href="/" className="text-xl font-bold">Arko MKT</Link>
                 <div className="hidden md:flex space-x-8">
-                    <a href="#home">{t("home")}</a>
-                    <a href="#about">{t("about")}</a>
-                    <a href="#services">{t("services")}</a>
-                    <a href="#projects">{t("projects")}</a>
-                    <a href="#contact">{t("contact")}</a>
+                    <Link href="/#home">{t("home")}</Link>
+                    <Link href="/#about">{t("about")}</Link>
+                    <Link href="/#services">{t("services")}</Link>
+                    <Link href="/#projects">{t("projects")}</Link>
+                    <Link href="/contacto">{t("contact")}</Link>
                 </div>
                 {/* Language Toggle Placeholder */}
                 <div className="flex items-center space-x-4">

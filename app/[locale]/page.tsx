@@ -7,8 +7,18 @@ import Projects from "@/components/sections/Projects";
 import Services from "@/components/sections/Services";
 import FAQ from "@/components/sections/FAQ";
 import CTA from "@/components/sections/CTA";
+import { setRequestLocale } from "next-intl/server";
 
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  // Enable static rendering
+  setRequestLocale(locale);
+
   return (
     <>
       <Navbar />

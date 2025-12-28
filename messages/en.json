@@ -57,5 +57,30 @@
     "CTA": {
         "title": "Let's Work Together",
         "button": "Get in touch"
+    },
+    "Contact": {
+        "title": "Start Your Project",
+        "subtitle": "Let us know how we can help bring your idea to life.",
+        "form": {
+            "name": "Name",
+            "email": "Email",
+            "country": "Country",
+            "phone": "Phone number",
+            "service": "Project Type",
+            "servicePlaceholder": "Select...",
+            "budget": "Budget range (USD)",
+            "budgetOptions": {
+                "range1": "$350 - $800",
+                "range2": "$800 - $1,500",
+                "range3": "$1,500 - $3,000",
+                "range4": "Above $3,000"
+            },
+            "message": "What do you need help with?",
+            "messagePlaceholder": "Tell us what you’re looking to create and what matters most...",
+            "preferredMethod": "Preferred Response Method",
+            "emailMethod": "Email",
+            "whatsappMethod": "WhatsApp",
+            "submit": "Submit"
+        }
     }
 }

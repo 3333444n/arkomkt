@@ -57,5 +57,30 @@
     "CTA": {
         "title": "Trabajemos Juntos",
         "button": "Ponte en contacto"
+    },
+    "Contact": {
+        "title": "Inicia tu Proyecto",
+        "subtitle": "Cuéntanos cómo podemos ayudarte a dar vida a tu idea.",
+        "form": {
+            "name": "Nombre",
+            "email": "Email",
+            "country": "País",
+            "phone": "Teléfono",
+            "service": "Tipo de Proyecto",
+            "servicePlaceholder": "Selecciona...",
+            "budget": "Rango de presupuesto (MXN)",
+            "budgetOptions": {
+                "range1": "$350 - $800",
+                "range2": "$800 - $1,500",
+                "range3": "$1,500 - $3,000",
+                "range4": "Más de $3,000"
+            },
+            "message": "¿En qué podemos ayudarte?",
+            "messagePlaceholder": "Cuéntanos qué buscas crear y qué es lo más importante...",
+            "preferredMethod": "Método de respuesta preferido",
+            "emailMethod": "Email",
+            "whatsappMethod": "WhatsApp",
+            "submit": "Enviar"
+        }
     }
 }

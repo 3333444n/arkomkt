@@ -57,5 +57,30 @@
     "CTA": {
         "title": "Travaillons Ensemble",
         "button": "Contactez-nous"
+    },
+    "Contact": {
+        "title": "Commencez Votre Projet",
+        "subtitle": "Dites-nous comment nous pouvons vous aider à donner vie à votre idée.",
+        "form": {
+            "name": "Nom",
+            "email": "Email",
+            "country": "Pays",
+            "phone": "Numéro de téléphone",
+            "service": "Type de Projet",
+            "servicePlaceholder": "Sélectionnez...",
+            "budget": "Tranche de budget (EUR)",
+            "budgetOptions": {
+                "range1": "350 € - 800 €",
+                "range2": "800 € - 1 500 €",
+                "range3": "1 500 € - 3 000 €",
+                "range4": "Plus de 3 000 €"
+            },
+            "message": "En quoi pouvons-nous vous aider ?",
+            "messagePlaceholder": "Dites-nous ce que vous cherchez à créer et ce qui compte le plus...",
+            "preferredMethod": "Méthode de réponse préférée",
+            "emailMethod": "Email",
+            "whatsappMethod": "WhatsApp",
+            "submit": "Envoyer"
+        }
     }
 }
