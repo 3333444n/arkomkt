@@ -2,7 +2,16 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import servicesData from "@/data/services.json";
+import countriesData from "@/data/countries.json";
+
+interface Country {
+    name: string;
+    code: string;
+    dial_code: string;
+    flag: string;
+}
 
 export default function ContactForm() {
     const t = useTranslations("Contact");
@@ -10,6 +19,21 @@ export default function ContactForm() {
 
     // Extract categories from servicesData
     const categories = servicesData.categories;
+
+    // State for country and phone
+    const [selectedCountryCode, setSelectedCountryCode] = useState("");
+    const [selectedDialCode, setSelectedDialCode] = useState("");
+
+    // Set default dial code based on country selection
+    const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const countryCode = e.target.value;
+        setSelectedCountryCode(countryCode);
+
+        const country = (countriesData as Country[]).find(c => c.code === countryCode);
+        if (country) {
+            setSelectedDialCode(country.dial_code);
+        }
+    };
 
     return (
         <section className="py-20 px-4">
@@ -34,6 +58,7 @@ export default function ContactForm() {
                                 id="name"
                                 className="w-full p-3 rounded-lg border border-gray-light bg-background focus:ring-2 focus:ring-blue-500 outline-none"
                                 placeholder={t("form.name")}
+                                required
                             />
                         </div>
 
@@ -45,6 +70,7 @@ export default function ContactForm() {
                                 id="email"
                                 className="w-full p-3 rounded-lg border border-gray-light bg-background focus:ring-2 focus:ring-blue-500 outline-none"
                                 placeholder={t("form.email")}
+                                required
                             />
                         </div>
                     </div>
@@ -53,24 +79,44 @@ export default function ContactForm() {
                         {/* Country */}
                         <div>
                             <label htmlFor="country" className="block text-sm font-medium mb-2">{t("form.country")}</label>
-                            <input
-                                type="text"
+                            <select
                                 id="country"
                                 className="w-full p-3 rounded-lg border border-gray-light bg-background focus:ring-2 focus:ring-blue-500 outline-none"
-                                placeholder={t("form.country")}
-                            />
+                                value={selectedCountryCode}
+                                onChange={handleCountryChange}
+                                required
+                            >
+                                <option value="" disabled>{t("form.country")}</option>
+                                {(countriesData as Country[]).map((country) => (
+                                    <option key={country.code} value={country.code}>
+                                        {country.flag} {country.name}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
 
                         {/* Phone */}
                         <div>
                             <label htmlFor="phone" className="block text-sm font-medium mb-2">{t("form.phone")}</label>
                             <div className="flex">
-                                <span className="p-3 border border-gray-light rounded-l-lg bg-gray-light text-gray-mid">🌐</span>
+                                <select
+                                    className="p-3 border border-gray-light rounded-l-lg bg-gray-light/10 text-gray-mid border-r-0 focus:ring-2 focus:ring-blue-500 outline-none max-w-[120px]"
+                                    value={selectedDialCode}
+                                    onChange={(e) => setSelectedDialCode(e.target.value)}
+                                >
+                                    <option value="" disabled>---</option>
+                                    {(countriesData as Country[]).map((country) => (
+                                        <option key={`${country.code}-dial`} value={country.dial_code}>
+                                            {country.code} {country.dial_code}
+                                        </option>
+                                    ))}
+                                </select>
                                 <input
                                     type="tel"
                                     id="phone"
-                                    className="w-full p-3 rounded-r-lg border border-l-0 border-gray-light bg-background focus:ring-2 focus:ring-blue-500 outline-none"
+                                    className="w-full p-3 rounded-r-lg border border-gray-light bg-background focus:ring-2 focus:ring-blue-500 outline-none"
                                     placeholder={t("form.phone")}
+                                    required
                                 />
                             </div>
                         </div>
@@ -82,6 +128,7 @@ export default function ContactForm() {
                         <select
                             id="service"
                             className="w-full p-3 rounded-lg border border-gray-light bg-background focus:ring-2 focus:ring-blue-500 outline-none"
+                            required
                         >
                             <option value="">{t("form.servicePlaceholder")}</option>
                             {categories.map((category) => (
@@ -99,7 +146,7 @@ export default function ContactForm() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {['range1', 'range2', 'range3', 'range4'].map((range) => (
                                 <label key={range} className="flex items-center p-4 border border-gray-light rounded-lg cursor-pointer hover:bg-gray-light/50 transition-colors">
-                                    <input type="radio" name="budget" value={range} className="mr-3" />
+                                    <input type="radio" name="budget" value={range} className="mr-3" required />
                                     <span>{t(`form.budgetOptions.${range}`)}</span>
                                 </label>
                             ))}
@@ -114,6 +161,7 @@ export default function ContactForm() {
                             rows={4}
                             className="w-full p-3 rounded-lg border border-gray-light bg-background focus:ring-2 focus:ring-blue-500 outline-none"
                             placeholder={t("form.messagePlaceholder")}
+                            required
                         ></textarea>
                     </div>
 
@@ -122,11 +170,11 @@ export default function ContactForm() {
                         <label className="block text-sm font-medium mb-4">{t("form.preferredMethod")}</label>
                         <div className="flex space-x-6">
                             <label className="flex items-center cursor-pointer">
-                                <input type="radio" name="preferredMethod" value="email" className="mr-2" />
+                                <input type="radio" name="preferredMethod" value="email" className="mr-2" required />
                                 <span>{t("form.emailMethod")}</span>
                             </label>
                             <label className="flex items-center cursor-pointer">
-                                <input type="radio" name="preferredMethod" value="whatsapp" className="mr-2" />
+                                <input type="radio" name="preferredMethod" value="whatsapp" className="mr-2" required />
                                 <span>{t("form.whatsappMethod")}</span>
                             </label>
                         </div>
