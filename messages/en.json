@@ -17,11 +17,11 @@
     },
     "Hero": {
         "title": "Boost your digital presence. <b>Sell more.</b>",
-        "subtitle": "We handle everything you need to grow digitally.<br>With custom-made campaigns.",
+        "subtitle": "We handle everything you need to grow digitally.<br></br>With custom-made campaigns.",
         "cta": {
             "primary": "Explore all our services",
             "secondary": "Schedule a discovery call",
-            "note": "(takes 15 minutes<br>it's FREE)"
+            "note": "(takes 15 minutes<br></br>it's FREE)"
         }
     },
     "About": {

@@ -161,6 +161,8 @@ Main page sections use **JSON with HTML strings** to support formatting (bold, i
 
 While `dangerouslySetInnerHTML` can be used for raw HTML, the preferred and safer method with **next-intl** is using `t.rich()`. This avoids common `FORMATTING_ERROR` and `UNCLOSED_TAG` issues.
 
+**IMPORTANT**: When using `t.rich()`, all tags in the translation string must be balanced (closed), even void elements like `<br>`.
+
 ```tsx
 import { useTranslations } from 'next-intl';
 
@@ -182,6 +184,13 @@ function HeroSection() {
       </p>
     </section>
   );
+}
+```
+
+In your translation files (`messages/*.json`), use balanced tags:
+```json
+{
+  "subtitle": "Line one<br></br>Line two"
 }
 ```
 

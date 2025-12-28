@@ -17,11 +17,11 @@
     },
     "Hero": {
         "title": "Augmentez votre présence digitale. <b>Vendez plus.</b>",
-        "subtitle": "Nous nous occupons de tout ce dont vous avez besoin pour croître numériquement.<br>Avec des campagnes sur mesure.",
+        "subtitle": "Nous nous occupons de tout ce dont vous avez besoin pour croître numériquement.<br></br>Avec des campagnes sur mesure.",
         "cta": {
             "primary": "Explorez tous nos services",
             "secondary": "Planifiez un appel découverte",
-            "note": "(prend 15 minutes<br>c'est GRATUIT)"
+            "note": "(prend 15 minutes<br></br>c'est GRATUIT)"
         }
     },
     "About": {
