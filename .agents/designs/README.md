@@ -37,14 +37,14 @@ designs/
 5. Service pills color-coded by category
 
 ### Service Category Colors
-| Category | Color Name | Hex (TBD) |
-|----------|------------|-----------|
-| Audiovisual | Baby Blue | #TBD |
-| Desarrollo | TBD | #TBD |
-| Comunicacion | Baby Pink | #TBD |
-| Diseno | TBD | #TBD |
-| Performance Marketing | TBD | #TBD |
-| Asesoria | TBD | #TBD |
+| Category | Color |
+|----------|-------|
+| Audiovisual | Baby Blue |
+| Desarrollo | Baby Green |
+| Comunicacion | Baby Pink |
+| Diseno | Baby Oragnce |
+| Performance Marketing | Baby Purple |
+| Asesoria | Baby Yellow |
 
 ## How to Use
 

@@ -1,0 +1,57 @@
+{
+    "Navbar": {
+        "home": "Home",
+        "about": "About Arko",
+        "services": "Services",
+        "projects": "Projects",
+        "contact": "Contact"
+    },
+    "Footer": {
+        "tagline": "Digital marketing and AI agency",
+        "copyright": "© 2024 Arko MKT. All rights reserved.",
+        "social": {
+            "instagram": "Instagram",
+            "linkedin": "LinkedIn",
+            "facebook": "Facebook"
+        }
+    },
+    "Hero": {
+        "title": "Boost your digital presence. <b>Sell more.</b>",
+        "subtitle": "We handle everything you need to grow digitally.<br>With custom-made campaigns.",
+        "cta": {
+            "primary": "Explore all our services",
+            "secondary": "Schedule a discovery call",
+            "note": "(takes 15 minutes<br>it's FREE)"
+        }
+    },
+    "About": {
+        "title": "About Arko",
+        "content": "ARKO is a marketing agency specialized in the digital world. We are experts in <b>communication</b>, <b>audiovisual production</b>, <b>design</b>, <b>development</b>, and <b>Artificial Intelligence</b>. We work with clients from around the world.",
+        "cta": "Send us a message or explore our services"
+    },
+    "Clients": {
+        "title": "Clients who trust us"
+    },
+    "Services": {
+        "title": "Our Services",
+        "subtitle": "Comprehensive solutions for your digital growth",
+        "cta": "View all services"
+    },
+    "FAQ": {
+        "title": "Frequently Asked Questions",
+        "items": [
+            {
+                "question": "How long does a project take?",
+                "answer": "The time varies depending on the project scope. Simple projects can take <b>2-4 weeks</b>, while more complex projects can take <b>2-3 months</b>."
+            },
+            {
+                "question": "Do you work with international clients?",
+                "answer": "Yes, we work with clients from <b>all over the world</b>. We offer services in <b>Spanish</b>, <b>English</b>, and <b>French</b>."
+            },
+            {
+                "question": "What services do you offer?",
+                "answer": "We offer <b>audiovisual production</b>, <b>web development</b>, <b>graphic design</b>, <b>communication</b>, <b>performance marketing</b>, and <b>AI consulting</b> services."
+            }
+        ]
+    }
+}

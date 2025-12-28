@@ -1,0 +1,88 @@
+{
+    "categories": [
+        {
+            "id": "audiovisual",
+            "name": {
+                "es": "Audiovisual",
+                "en": "Audiovisual",
+                "fr": "Audiovisuel"
+            },
+            "color": "baby-blue",
+            "services": [
+                {
+                    "id": "video-editing",
+                    "title": {
+                        "es": "Edición de Video",
+                        "en": "Video Editing",
+                        "fr": "Montage Vidéo"
+                    },
+                    "subtitle": {
+                        "es": "Contenido visual que impacta",
+                        "en": "Visual content that impacts",
+                        "fr": "Contenu visuel qui impacte"
+                    },
+                    "description": {
+                        "es": "Transformamos tus ideas en videos profesionales que capturan la atención de tu audiencia.",
+                        "en": "We transform your ideas into professional videos that capture your audience's attention.",
+                        "fr": "Nous transformons vos idées en vidéos professionnelles qui capturent l'attention de votre public."
+                    },
+                    "footer": {
+                        "es": "Desde videos corporativos hasta contenido para redes sociales",
+                        "en": "From corporate videos to social media content",
+                        "fr": "Des vidéos d'entreprise au contenu pour les réseaux sociaux"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "desarrollo",
+            "name": {
+                "es": "Desarrollo",
+                "en": "Development",
+                "fr": "Développement"
+            },
+            "color": "baby-green",
+            "services": []
+        },
+        {
+            "id": "comunicacion",
+            "name": {
+                "es": "Comunicación",
+                "en": "Communication",
+                "fr": "Communication"
+            },
+            "color": "baby-pink",
+            "services": []
+        },
+        {
+            "id": "diseno",
+            "name": {
+                "es": "Diseño",
+                "en": "Design",
+                "fr": "Design"
+            },
+            "color": "baby-orange",
+            "services": []
+        },
+        {
+            "id": "performance-marketing",
+            "name": {
+                "es": "Performance Marketing",
+                "en": "Performance Marketing",
+                "fr": "Performance Marketing"
+            },
+            "color": "baby-purple",
+            "services": []
+        },
+        {
+            "id": "asesoria",
+            "name": {
+                "es": "Asesoría",
+                "en": "Consulting",
+                "fr": "Conseil"
+            },
+            "color": "baby-yellow",
+            "services": []
+        }
+    ]
+}

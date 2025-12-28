@@ -3,8 +3,10 @@
 ## Overview
 
 Content is managed through a hybrid approach:
+- **JSON files with HTML strings** for main page sections (Hero, About, Services, FAQ)
 - **JSON files** for structured, static data (services, clients, site metadata)
 - **MDX files** for rich content (projects, blog posts)
+- **i18n translation files** for UI strings and main page content
 
 ## Directory Structure
 
@@ -88,30 +90,26 @@ Blog content here...
 
 ## Services Data (data/services.json)
 
+Services are organized by categories, each with multiple service items. Each service has:
+- **title**: Service name
+- **subtitle**: Brief tagline
+- **description**: Detailed description
+- **footer**: Additional info or CTA text
+
 ```json
 {
   "categories": [
     {
       "id": "audiovisual",
-      "name": {
-        "es": "Audiovisual",
-        "en": "Audiovisual",
-        "fr": "Audiovisuel"
-      },
+      "name": { "es": "...", "en": "...", "fr": "..." },
       "color": "baby-blue",
       "services": [
         {
           "id": "video-editing",
-          "name": {
-            "es": "Edicion de video",
-            "en": "Video Editing",
-            "fr": "Montage video"
-          },
-          "description": {
-            "es": "...",
-            "en": "...",
-            "fr": "..."
-          }
+          "title": { "es": "...", "en": "...", "fr": "..." },
+          "subtitle": { "es": "...", "en": "...", "fr": "..." },
+          "description": { "es": "...", "en": "...", "fr": "..." },
+          "footer": { "es": "...", "en": "...", "fr": "..." }
         }
       ]
     }
@@ -121,39 +119,62 @@ Blog content here...
 
 ## Clients Data (data/clients.json)
 
+Client logos with names (shown on hover) and optional URLs.
+
 ```json
 {
   "clients": [
-    {
-      "name": "Client Name",
-      "logo": "/logos/client.svg",
-      "url": "https://client.com"
-    }
+    { "name": "...", "logo": "/logos/client.svg", "url": "https://..." }
   ]
 }
 ```
 
-## UI Translations (messages/es.json)
+## Main Page Content (messages/es.json, en.json, fr.json)
+
+Main page sections use **JSON with HTML strings** to support formatting (bold, italics, line breaks).
+
+### Structure
 
 ```json
 {
-  "Navbar": {
-    "home": "Inicio",
-    "about": "Acerca de Arko",
-    "services": "Servicios",
-    "projects": "Proyectos",
-    "contact": "Contacto"
-  },
-  "Hero": {
-    "title": "...",
-    "subtitle": "..."
-  },
-  "CTA": {
-    "title": "...",
-    "button": "..."
-  }
+  "Navbar": { "home": "...", "about": "...", "services": "...", "projects": "...", "contact": "..." },
+  "Footer": { "tagline": "...", "copyright": "...", "social": { "instagram": "...", "linkedin": "...", "facebook": "..." } },
+  "Hero": { "title": "...", "subtitle": "...", "cta": { "primary": "...", "secondary": "...", "note": "..." } },
+  "About": { "title": "...", "content": "...", "cta": "..." },
+  "Clients": { "title": "..." },
+  "Services": { "title": "...", "subtitle": "...", "cta": "..." },
+  "FAQ": { "title": "...", "items": [{ "question": "...", "answer": "..." }] }
 }
 ```
+
+**Note**: Actual content is in the translation files. Services section titles are here, but service details are in `data/services.json`.
+
+### HTML Formatting Guidelines
+
+- **Bold**: Use `<b>text</b>` or `<strong>text</strong>`
+- **Italic**: Use `<i>text</i>` or `<em>text</em>`
+- **Line breaks**: Use `<br>` or `<br/>`
+- **Links**: Use `<a href="url">text</a>` (only for trusted content)
+- Keep HTML simple - complex markup should use components instead
+
+### Rendering HTML Content
+
+```tsx
+import { useTranslations } from 'next-intl';
+
+function HeroSection() {
+  const t = useTranslations('Hero');
+  
+  return (
+    <section>
+      <h1 dangerouslySetInnerHTML={{ __html: t('title') }} />
+      <p dangerouslySetInnerHTML={{ __html: t('subtitle') }} />
+    </section>
+  );
+}
+```
+
+**Security Note**: Only use `dangerouslySetInnerHTML` with trusted content (your own translations). Never use with user-generated content.
 
 ## Adding New Content
 

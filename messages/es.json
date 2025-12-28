@@ -1,0 +1,57 @@
+{
+    "Navbar": {
+        "home": "Inicio",
+        "about": "Acerca de Arko",
+        "services": "Servicios",
+        "projects": "Proyectos",
+        "contact": "Contacto"
+    },
+    "Footer": {
+        "tagline": "Agencia de marketing digital e Inteligencia Artificial",
+        "copyright": "© 2024 Arko MKT. Todos los derechos reservados.",
+        "social": {
+            "instagram": "Instagram",
+            "linkedin": "LinkedIn",
+            "facebook": "Facebook"
+        }
+    },
+    "Hero": {
+        "title": "Aumenta tu presencia digital. <b>Vende más.</b>",
+        "subtitle": "Nos encargamos de todo lo que necesitas para crecer digitalmente.<br>Con campañas hechas a la medida.",
+        "cta": {
+            "primary": "Explora todos nuestros servicios",
+            "secondary": "Agenda una llamada de descubrimiento",
+            "note": "(toma 15 minutos<br>es GRATIS)"
+        }
+    },
+    "About": {
+        "title": "Acerca de Arko",
+        "content": "ARKO es una agencia de marketing especializada en el mundo digital. Somos expertos en <b>comunicación</b>, <b>producción audiovisual</b>, <b>diseño</b>, <b>desarrollo</b> e <b>Inteligencia Artificial</b>. Trabajamos con clientes de todo el mundo.",
+        "cta": "Envíanos un mensaje o explora nuestros servicios"
+    },
+    "Clients": {
+        "title": "Clientes que confían en nosotros"
+    },
+    "Services": {
+        "title": "Nuestros Servicios",
+        "subtitle": "Soluciones integrales para tu crecimiento digital",
+        "cta": "Ver todos los servicios"
+    },
+    "FAQ": {
+        "title": "Preguntas Frecuentes",
+        "items": [
+            {
+                "question": "¿Cuánto tiempo toma un proyecto?",
+                "answer": "El tiempo varía según el alcance del proyecto. Proyectos simples pueden tomar <b>2-4 semanas</b>, mientras que proyectos más complejos pueden tomar <b>2-3 meses</b>."
+            },
+            {
+                "question": "¿Trabajan con clientes internacionales?",
+                "answer": "Sí, trabajamos con clientes de <b>todo el mundo</b>. Ofrecemos servicios en <b>español</b>, <b>inglés</b> y <b>francés</b>."
+            },
+            {
+                "question": "¿Qué servicios ofrecen?",
+                "answer": "Ofrecemos servicios de <b>producción audiovisual</b>, <b>desarrollo web</b>, <b>diseño gráfico</b>, <b>comunicación</b>, <b>performance marketing</b> y <b>asesoría en IA</b>."
+            }
+        ]
+    }
+}

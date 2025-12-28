@@ -1,0 +1,19 @@
+{
+    "clients": [
+        {
+            "name": "Client Name 1",
+            "logo": "/logos/client1.svg",
+            "url": "https://client1.com"
+        },
+        {
+            "name": "Client Name 2",
+            "logo": "/logos/client2.svg",
+            "url": "https://client2.com"
+        },
+        {
+            "name": "Client Name 3",
+            "logo": "/logos/client3.svg",
+            "url": "https://client3.com"
+        }
+    ]
+}
