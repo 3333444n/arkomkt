@@ -25,6 +25,8 @@ export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
+import { Providers } from "@/components/layout/Providers";
+
 export default async function LocaleLayout({
   children,
   params,
@@ -47,13 +49,13 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextIntlClientProvider messages={messages}>
+        <Providers locale={locale} messages={messages}>
           {children}
-        </NextIntlClientProvider>
+        </Providers>
       </body>
     </html>
   );

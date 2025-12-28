@@ -70,10 +70,10 @@
             "servicePlaceholder": "Selecciona...",
             "budget": "Rango de presupuesto (MXN)",
             "budgetOptions": {
-                "range1": "$350 - $800",
-                "range2": "$800 - $1,500",
-                "range3": "$1,500 - $3,000",
-                "range4": "Más de $3,000"
+                "range1": "$6000 - $12000",
+                "range2": "$12000 - $25000",
+                "range3": "$25000 - $50000",
+                "range4": "Más de $50000"
             },
             "message": "¿En qué podemos ayudarte?",
             "messagePlaceholder": "Cuéntanos qué buscas crear y qué es lo más importante...",
