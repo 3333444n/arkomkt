@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
+import { Link } from "@/i18n/config";
 
 export default function Hero() {
     const t = useTranslations("Hero");
@@ -35,13 +36,13 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                    <button className="bg-foreground text-background px-8 py-3 rounded-full font-medium hover:opacity-90 transition-opacity">
+                    <Link href="#services" className="bg-foreground text-background px-8 py-3 rounded-full font-medium hover:opacity-90 transition-opacity">
                         {t("cta.primary")}
-                    </button>
+                    </Link>
                     <div className="text-center md:text-left">
-                        <button className="text-foreground font-medium underline underline-offset-4 decoration-2">
+                        <Link href="/contacto" className="text-foreground font-medium underline underline-offset-4 decoration-2">
                             {t("cta.secondary")}
-                        </button>
+                        </Link>
                         <p className="text-xs text-gray-mid mt-1">
                             {t.rich("cta.note", {
                                 br: () => <br />,

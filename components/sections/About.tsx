@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
+import { Link } from "@/i18n/config";
 
 export default function About() {
     const t = useTranslations("About");
@@ -30,15 +31,17 @@ export default function About() {
                             b: (chunks) => <b>{chunks}</b>,
                         })}
                     </motion.p>
-                    <motion.button
-                        className="bg-foreground text-background px-8 py-3 rounded-full font-medium"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                    >
-                        {t("cta")}
-                    </motion.button>
+                    <Link href="/contacto">
+                        <motion.button
+                            className="bg-foreground text-background px-8 py-3 rounded-full font-medium"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.4 }}
+                        >
+                            {t("cta")}
+                        </motion.button>
+                    </Link>
                 </div>
             </div>
         </section>
