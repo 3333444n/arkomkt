@@ -12,7 +12,7 @@ interface ProvidersProps {
 export function Providers({ children, locale, messages }: ProvidersProps) {
     return (
         <NextIntlClientProvider locale={locale} messages={messages}>
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
                 {children}
             </ThemeProvider>
         </NextIntlClientProvider>
