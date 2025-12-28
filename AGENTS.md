@@ -119,11 +119,11 @@ arkomkt-website/
 | Category | Color |
 |----------|-------|
 | Audiovisual | Baby Blue |
-| Desarrollo | TBD |
+| Desarrollo | Baby Green |
 | Comunicacion | Baby Pink |
-| Diseno | TBD |
-| Performance Marketing | TBD |
-| Asesoria | TBD |
+| Diseno | Baby Oragnce |
+| Performance Marketing | Baby Purple |
+| Asesoria | Baby Yellow |
 
 ## Commands
 
