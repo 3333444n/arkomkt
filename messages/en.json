@@ -53,5 +53,9 @@
                 "answer": "We offer <b>audiovisual production</b>, <b>web development</b>, <b>graphic design</b>, <b>communication</b>, <b>performance marketing</b>, and <b>AI consulting</b> services."
             }
         ]
+    },
+    "CTA": {
+        "title": "Let's Work Together",
+        "button": "Get in touch"
     }
 }

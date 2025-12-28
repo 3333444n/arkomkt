@@ -53,5 +53,9 @@
                 "answer": "Ofrecemos servicios de <b>producción audiovisual</b>, <b>desarrollo web</b>, <b>diseño gráfico</b>, <b>comunicación</b>, <b>performance marketing</b> y <b>asesoría en IA</b>."
             }
         ]
+    },
+    "CTA": {
+        "title": "Trabajemos Juntos",
+        "button": "Ponte en contacto"
     }
 }

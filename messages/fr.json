@@ -53,5 +53,9 @@
                 "answer": "Nous offrons des services de <b>production audiovisuelle</b>, <b>développement web</b>, <b>design graphique</b>, <b>communication</b>, <b>performance marketing</b> et <b>conseil en IA</b>."
             }
         ]
+    },
+    "CTA": {
+        "title": "Travaillons Ensemble",
+        "button": "Contactez-nous"
     }
 }
