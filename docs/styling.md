@@ -9,13 +9,12 @@
 ## Theme Configuration
 
 Dark mode uses Tailwind's `class` strategy. The system is configured in `app/globals.css` using the Tailwind 4.0 `@theme` block.
-
 ```css
 /* app/globals.css */
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  /* ... */
+/* ... */
 }
 ```
 
@@ -36,7 +35,6 @@ Dark mode uses Tailwind's `class` strategy. The system is configured in `app/glo
 
 ### Baby Palette (Service Categories)
 These soft colors are intended for pills, category backgrounds, and subtle accents.
-
 | Category | Token | Hex |
 |----------|-------|-----|
 | Audiovisual | `--baby-blue` | `#DBEAFE` |
@@ -48,7 +46,6 @@ These soft colors are intended for pills, category backgrounds, and subtle accen
 
 ### Gradients
 Gradients are available as utility classes (e.g., `bg-grad-blue`).
-
 | Gradient | Colors | Utility Class |
 |----------|--------|---------------|
 | Blue | #60A5FA → #3B82F6 | `bg-grad-blue` |
@@ -58,16 +55,65 @@ Gradients are available as utility classes (e.g., `bg-grad-blue`).
 | Green | #86EFAC → #10B981 | `bg-grad-green` |
 | Purple | #D8B4FE → #8B5CF6 | `bg-grad-purple` |
 
+
 ## Typography
 
 ### Font Stack
 - **Sans-serif**: `Inter` (used for body text)
 - **Serif**: `Times New Roman` (used for headings)
-
 ```css
 --font-sans: var(--font-inter);
 --font-serif: var(--font-times);
 ```
+### Font Setup
+
+Fonts are loaded using Next.js's `next/font/google` for optimal performance and zero layout shift.
+
+**Configuration in `app/layout.tsx`:**
+```typescript
+import { Inter } from 'next/font/google'
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={inter.variable}>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+**Configuration in `app/globals.css`:**
+```css
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: ui-serif, Georgia, 'Times New Roman', serif;
+  /* ... other theme variables ... */
+}
+```
+
+### Font Best Practices
+
+1. **Use `next/font/google`**: Automatically self-hosts Google Fonts at build time, eliminating external requests and preventing font loading flashes (FOUT/FOIT).
+2. **Always set `display: 'swap'`**: Ensures text remains visible during font loading.
+3. **Use CSS variables**: The `variable` option creates a CSS custom property that integrates seamlessly with Tailwind 4's `@theme` configuration.
+4. **Subset appropriately**: Only include the character sets you need (e.g., `subsets: ['latin']`) to reduce file size.
+5. **Load multiple weights efficiently**: If you need specific weights, configure them in the font import:
+```typescript
+   const inter = Inter({
+     subsets: ['latin'],
+     variable: '--font-inter',
+     weight: ['400', '500', '700'], // Only load what you need
+   })
+```
+6. **Add new fonts**: To add additional Google Fonts, import them in `layout.tsx`, add their variable to the `className`, and configure them in the `@theme` block.
 
 ### Scale
 | Class | Size | Usage |
@@ -82,7 +128,6 @@ Gradients are available as utility classes (e.g., `bg-grad-blue`).
 | text-6xl | 3.75rem | Hero headlines |
 
 ## Responsive Breakpoints
-
 | Breakpoint | Width | Usage |
 |------------|-------|-------|
 | sm | 640px | Large phones |
@@ -90,21 +135,17 @@ Gradients are available as utility classes (e.g., `bg-grad-blue`).
 | lg | 1024px | Small laptops |
 | xl | 1280px | Desktops |
 | 2xl | 1536px | Large screens |
-
 ## Component Patterns
 
 ### Cards
 ```tsx
 <div className="rounded-lg border border-gray-light bg-background p-6 shadow-sm transition-shadow hover:shadow-md">
-  {/* Card content */}
+{/* Card content */}
 </div>
 ```
-
 ### Buttons (WIP)
 Primary and secondary buttons should use semantic colors or gradients for a premium feel.
-
 ## Best Practices
-
 1. **Use semantic tokens**: Use `text-foreground` and `bg-background` instead of hardcoded white/black.
 2. **Design with dark mode in mind**: Always check how `bg-grad-*` looks on `#121212`.
 3. **Typography**: Use standard Tailwind `text-*` classes. Headings will automatically use the Serif font.
