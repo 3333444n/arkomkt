@@ -29,16 +29,12 @@ arkomkt-website/
 │   ├── content.md                 # How to manage content (projects, blog)
 │   └── styling.md                 # Design tokens, Tailwind patterns
 ├── app/
-│   ├── [locale]/                  # Locale-based routing (es, en, fr)
-│   │   ├── layout.tsx
-│   │   ├── page.tsx               # Main page
-│   │   ├── proyectos/
-│   │   │   ├── page.tsx           # Projects search page
-│   │   │   └── [slug]/page.tsx    # Individual project pages
-│   │   ├── contacto/page.tsx
-│   │   └── blog/                  # Future implementation
+│   ├── page.tsx               # Main page
+│   ├── proyectos/
+│   │   ├── page.tsx           # Projects search page
+│   │   └── [slug]/page.tsx    # Individual project pages
 │   ├── globals.css
-│   └── layout.tsx                 # Root layout
+│   └── layout.tsx             # Root layout
 ├── components/
 │   ├── ui/                        # Reusable UI primitives
 │   ├── sections/                  # Page sections (Hero, Services, etc.)
