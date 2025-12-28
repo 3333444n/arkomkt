@@ -45,7 +45,12 @@
     "Services": {
         "title": "Nos Services",
         "subtitle": "Solutions complètes pour votre croissance digitale",
-        "cta": "Voir tous les services"
+        "cta": "Explorez nos projets"
+    },
+    "Projects": {
+        "title": "Nos Projets",
+        "subtitle": "Solutions complètes pour votre croissance digitale",
+        "cta": "Explorez nos projets"
     },
     "FAQ": {
         "title": "Questions Fréquentes",

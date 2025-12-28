@@ -17,7 +17,6 @@ export default function Footer() {
                         <a href={t("links.instagram")} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">{t("social.instagram")}</a>
                         <a href={t("links.linkedin")} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">{t("social.linkedin")}</a>
                         <a href={t("links.facebook")} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">{t("social.facebook")}</a>
-                        <a href={t("links.whatsapp")} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">{t("social.whatsapp")}</a>
                         <a href={t("links.tiktok")} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">{t("social.tiktok")}</a>
                         <a href={t("links.youtube")} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">{t("social.youtube")}</a>
                     </div>

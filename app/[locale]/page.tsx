@@ -26,8 +26,8 @@ export default async function Home({
         <Hero />
         <About />
         <Clients />
-        <Projects />
         <Services />
+        <Projects />
         <FAQ />
         <CTA />
       </main>

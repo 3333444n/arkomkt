@@ -17,6 +17,7 @@
   --baby-orange: #ffedd5;
   --baby-red: #fee2e2;
   --baby-purple: #ede9fe;
+  --baby-green: #dcfce7;
 
   /* Fonts */
   --font-inter: "Inter", system-ui, sans-serif;
@@ -48,6 +49,7 @@
   --color-baby-orange: var(--baby-orange);
   --color-baby-red: var(--baby-red);
   --color-baby-purple: var(--baby-purple);
+  --color-baby-green: var(--baby-green);
 
   /* Font Families */
   --font-sans: var(--font-inter);
