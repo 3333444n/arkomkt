@@ -12,7 +12,17 @@
         "social": {
             "instagram": "Instagram",
             "linkedin": "LinkedIn",
-            "facebook": "Facebook"
+            "facebook": "Facebook",
+            "whatsapp": "WhatsApp",
+            "tiktok": "TikTok",
+            "youtube": "YouTube"
+        },
+        "links": {
+            "instagram": "https://www.instagram.com/arkomkt",
+            "linkedin": "https://www.linkedin.com/company/arkomkt",
+            "facebook": "https://www.facebook.com/arkomkt",
+            "tiktok": "https://www.tiktok.com/@arkomkt",
+            "youtube": "https://www.youtube.com/@arkomkt"
         }
     },
     "Hero": {
