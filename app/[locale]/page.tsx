@@ -8,6 +8,7 @@ import Services from "@/components/sections/Services";
 import FAQ from "@/components/sections/FAQ";
 import CTA from "@/components/sections/CTA";
 import { setRequestLocale } from "next-intl/server";
+import { getProjects } from "@/lib/content";
 
 export default async function Home({
   params,
@@ -19,6 +20,8 @@ export default async function Home({
   // Enable static rendering
   setRequestLocale(locale);
 
+  const projects = await getProjects(locale);
+
   return (
     <>
       <Navbar />
@@ -27,7 +30,7 @@ export default async function Home({
         <About />
         <Clients />
         <Services />
-        <Projects />
+        <Projects projects={projects} locale={locale} />
         <FAQ />
         <CTA />
       </main>

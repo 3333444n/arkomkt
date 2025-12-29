@@ -1,0 +1,13 @@
+{
+    "NextJS": "/logos/tools/nextjs.svg",
+    "Tailwind": "/logos/tools/tailwind.svg",
+    "Figma": "/logos/tools/figma.svg",
+    "React": "/logos/tools/react.svg",
+    "TypeScript": "/logos/tools/typescript.svg",
+    "Adobe Premiere": "/logos/tools/premiere.svg",
+    "Adobe After Effects": "/logos/tools/after-effects.svg",
+    "DaVinci Resolve": "/logos/tools/davinci.svg",
+    "Blender": "/logos/tools/blender.svg",
+    "Photoshop": "/logos/tools/photoshop.svg",
+    "Illustrator": "/logos/tools/illustrator.svg"
+}

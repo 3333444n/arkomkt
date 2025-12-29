@@ -41,22 +41,41 @@ messages/
 ---
 title: "Project Title"
 client: "Client Name"
-tags: ["video-editing", "social-media"]
-testimonial: "Quote from client..."
-description: "Brief project description"
-date: "2024-01-15"
+clientLogo: "/logos/client-logo.png"
+clientLocation: "Mexico City, Mexico"
+clientSlogan: "Innovating the future"
+clientDescription: "Long description of the client..."
+serviceCategories: ["audiovisual", "desarrollo"] # From services.json categories
+year: "2024"
+tools: ["NextJS", "Tailwind", "Figma"] # Keys from tools.json
+outcome: "30% increase in sales..."
+description: "Short description for cards..."
+coverImage: "/projects/project-slug/hero.jpg"
+images: 
+  - "/projects/project-slug/img1.jpg"
+  - "/projects/project-slug/img2.jpg"
+testimonial:
+  text: "Amazing work..."
+  author: "John Doe"
+  position: "CEO"
+  photo: "/projects/project-slug/author.jpg"
 featured: true
-coverImage: "/projects/project-slug/cover.jpg"
 ---
 
 ## Overview
 
-Full project content in MDX format...
+(This is the "Short Description" or Intro in the design)
+Full project content...
 
-## Results
+## Challenge
 
-- Metric 1
-- Metric 2
+(The "Problema/Reto")
+Description of the challenge...
+
+## Solution
+
+(The "Solución")
+How we solved it...
 ```
 
 ### Project Frontmatter Fields
@@ -65,12 +84,19 @@ Full project content in MDX format...
 |-------|------|----------|-------------|
 | title | string | Yes | Project title |
 | client | string | Yes | Client name |
-| tags | string[] | Yes | Service IDs from services.json |
-| testimonial | string | No | Client quote |
-| description | string | Yes | Brief description |
-| date | string | Yes | ISO date format |
+| clientLogo | string | Yes | Path to client logo |
+| clientLocation | string | No | Client Headquarters |
+| clientSlogan | string | No | Client CTA/Tagline |
+| clientDescription | string | No | Full client bio |
+| serviceCategories | string[] | Yes | Category IDs from services.json |
+| year | string | Yes | Project year |
+| tools | string[] | No | List of tool names (keys in tools.json) |
+| outcome | string | Yes | The "Resultado" displayed on cards |
+| description | string | Yes | Short description for SEO/Cards |
+| coverImage | string | Yes | Hero image path |
+| images | string[] | No | Gallery images |
+| testimonial | object | No | { text, author, position, photo } |
 | featured | boolean | No | Show on main page |
-| coverImage | string | Yes | Path to cover image |
 
 ## Blog MDX Format
 
