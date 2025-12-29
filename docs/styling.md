@@ -33,6 +33,18 @@ Dark mode uses Tailwind's `class` strategy. The system is configured in `app/glo
 | `--gray-mid` | `#888888` | `#777777` | Muted text |
 | `--gray-dark` | `#333333` | `#EEEEEE` | Stronger accents |
 
+### Static Colors (Theme-Invariant)
+These colors remain constant regardless of light/dark mode. Use when you need elements that are always black or always white.
+
+| Token | Value | Tailwind Usage | Purpose |
+|-------|-------|----------------|----------|
+| `--static-black` | `#121212` | `text-static-black`, `bg-static-black` | Always dark (matches light-mode foreground) |
+| `--static-white` | `#FFFFFF` | `text-static-white`, `bg-static-white` | Always light (matches light-mode background) |
+| `--static-true-black` | `#000000` | `text-static-true-black`, `bg-static-true-black` | Pure black |
+| `--static-true-white` | `#FFFFFF` | `text-static-true-white`, `bg-static-true-white` | Pure white |
+
+> **When to use**: For overlays, cards, or elements that have a fixed visual treatment (e.g., a white card on a dark image background, or black text on a pastel pill).
+
 ### Baby Palette (Service Categories)
 These soft colors are intended for pills, category backgrounds, and subtle accents.
 | Category | Token | Hex |

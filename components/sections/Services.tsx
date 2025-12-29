@@ -58,7 +58,7 @@ export default function Services() {
                         {t("title")}
                     </motion.h2>
                     <motion.p
-                        className="text-lg text-gray-mid max-w-2xl mx-auto"
+                        className="text-lg text-static-black max-w-2xl mx-auto"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -73,7 +73,7 @@ export default function Services() {
                         <div key={category.id} className="flex flex-wrap gap-4 contents">
                             {/* Category Pill */}
                             <div
-                                className={`px-8 py-3 rounded-full ${getColorClass(category.color)} text-foreground text-xl font-serif hover:font-bold transition-all whitespace-nowrap cursor-default`}
+                                className={`px-8 py-3 rounded-full ${getColorClass(category.color)} text-static-black text-xl font-serif hover:font-bold transition-all whitespace-nowrap cursor-default`}
                             >
                                 {category.name[locale as keyof typeof category.name] || category.name["es"]}
                             </div>
@@ -89,7 +89,7 @@ export default function Services() {
                                                     layoutId={service.id}
                                                     onClick={() => handleServiceClick(service.id)}
                                                     whileHover={{ scale: 1.05 }}
-                                                    className={`px-8 py-3 rounded-full ${getColorClass(category.color)} text-foreground text-xl font-sans hover:font-bold transition-all whitespace-nowrap`}
+                                                    className={`px-8 py-3 rounded-full ${getColorClass(category.color)} text-static-black text-xl font-sans hover:font-bold transition-all whitespace-nowrap`}
                                                     initial={{ opacity: 0 }}
                                                     animate={{ opacity: 1 }}
                                                     exit={{ opacity: 0 }}
@@ -99,7 +99,7 @@ export default function Services() {
                                             ) : (
                                                 <motion.div
                                                     layoutId={service.id}
-                                                    className={`p-8 rounded-[2rem] ${getColorClass(category.color)} text-foreground w-full md:max-w-xl min-w-[300px] z-10 shadow-2xl relative`}
+                                                    className={`p-8 rounded-[2rem] ${getColorClass(category.color)} text-static-black w-full md:max-w-xl min-w-[300px] z-10 shadow-2xl relative`}
                                                     initial={{ borderRadius: "9999px" }}
                                                     animate={{ borderRadius: "2rem" }}
                                                 >

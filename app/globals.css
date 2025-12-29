@@ -19,6 +19,12 @@
   --baby-purple: #ede9fe;
   --baby-green: #dcfce7;
 
+  /* Static Colors (theme-invariant - NOT overridden in .dark) */
+  --static-black: #121212;
+  --static-white: #ffffff;
+  --static-true-black: #000000;
+  --static-true-white: #ffffff;
+
   /* Fonts are loaded via next/font/google in app/[locale]/layout.tsx */
 }
 
@@ -48,6 +54,12 @@
   --color-baby-red: var(--baby-red);
   --color-baby-purple: var(--baby-purple);
   --color-baby-green: var(--baby-green);
+
+  /* Static Colors (theme-invariant) */
+  --color-static-black: var(--static-black);
+  --color-static-white: var(--static-white);
+  --color-static-true-black: var(--static-true-black);
+  --color-static-true-white: var(--static-true-white);
 
   /* Font Families */
   --font-sans: var(--font-sans-serif);

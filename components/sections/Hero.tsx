@@ -11,13 +11,14 @@ export default function Hero() {
         <section id="home" className="pt-32 pb-20 overflow-hidden">
             <div className="container mx-auto px-4 text-center">
                 <motion.h1
-                    className="text-4xl md:text-6xl font-serif mb-6"
+                    className="text-4xl md:text-6xl font-sans mb-6"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
                     {t.rich("title", {
                         b: (chunks) => <b>{chunks}</b>,
+                        br: () => <br />,
                     })}
                 </motion.h1>
                 <motion.p
