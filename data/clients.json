@@ -1,19 +1,42 @@
 {
     "clients": [
         {
-            "name": "Client Name 1",
-            "logo": "/logos/client1.svg",
-            "url": "https://client1.com"
+            "name": "BBH",
+            "logoLight": "/logos/clients/bbh-blanco.png",
+            "logoDark": "/logos/clients/bbh-negro.png",
+            "url": "https://bbh.com"
         },
         {
-            "name": "Client Name 2",
-            "logo": "/logos/client2.svg",
-            "url": "https://client2.com"
+            "name": "Eliel",
+            "logoLight": "/logos/clients/eliel-blanco.png",
+            "logoDark": "/logos/clients/eliel-negro.png",
+            "url": "https://eliel.com"
         },
         {
-            "name": "Client Name 3",
-            "logo": "/logos/client3.svg",
-            "url": "https://client3.com"
+            "name": "Urban",
+            "logoLight": "/logos/clients/urban-blanco.png",
+            "logoDark": "/logos/clients/urban-negro.png",
+            "url": "https://urban.com"
+        },
+        {
+            "name": "Joss",
+            "logo": "/logos/clients/joss.png",
+            "url": "https://joss.com"
+        },
+        {
+            "name": "NYXNY",
+            "logo": "/logos/clients/nyxny.png",
+            "url": "https://nyxny.com"
+        },
+        {
+            "name": "Siscom",
+            "logo": "/logos/clients/siscom.png",
+            "url": "https://siscom.com"
+        },
+        {
+            "name": "Vane",
+            "logo": "/logos/clients/vane.png",
+            "url": "https://vane.com"
         }
     ]
 }
