@@ -60,11 +60,11 @@ Gradients are available as utility classes (e.g., `bg-grad-blue`).
 
 ### Font Stack
 - **Sans-serif**: Used for body text.
-- **Serif**: Used for headings.
+- **Serif**: Used for headings and accents.
 
 ```css
---font-sans: var(--font-urbanist);
---font-serif: var(--font-instrument);
+--font-sans: var(--font-sans-serif);
+--font-serif: var(--font-serif);
 ```
 ### Font Setup
 
@@ -78,8 +78,8 @@ Fonts are imported from `next/font/google` and configured with CSS variables.
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-urbanist);
-  --font-serif: var(--font-instrument);
+  --font-sans: var(--font-sans-serif);
+  --font-serif: var(--font-serif);
   /* ... other theme variables ... */
 }
 ```
@@ -92,9 +92,9 @@ Fonts are imported from `next/font/google` and configured with CSS variables.
 4. **Subset appropriately**: Only include the character sets you need (e.g., `subsets: ['latin']`) to reduce file size.
 5. **Load multiple weights efficiently**: If you need specific weights, configure them in the font import:
 ```typescript
-   const inter = Inter({
+   const sansSerif = Inter({
      subsets: ['latin'],
-     variable: '--font-inter',
+     variable: '--font-sans-serif',
      weight: ['400', '500', '700'], // Only load what you need
    })
 ```

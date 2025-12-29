@@ -6,14 +6,14 @@ import { locales } from "@/i18n/config";
 import { notFound } from "next/navigation";
 import "../globals.css";
 
-const urbanist = Urbanist({
-  variable: "--font-urbanist",
+const sansSerif = Urbanist({
+  variable: "--font-sans-serif",
   subsets: ["latin"],
   display: "swap",
 });
 
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument",
+const serif = Instrument_Serif({
+  variable: "--font-serif",
   subsets: ["latin"],
   weight: "400",
   display: "swap",
@@ -52,7 +52,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={`${urbanist.variable} ${instrumentSerif.variable}`} suppressHydrationWarning>
+    <html lang={locale} className={`${sansSerif.variable} ${serif.variable}`} suppressHydrationWarning>
       <head>
 
       </head>

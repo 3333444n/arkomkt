@@ -50,8 +50,8 @@
   --color-baby-green: var(--baby-green);
 
   /* Font Families */
-  --font-sans: var(--font-urbanist);
-  --font-serif: var(--font-instrument);
+  --font-sans: var(--font-sans-serif);
+  --font-serif: var(--font-serif);
 
   /* Custom Gradients as background images */
   --background-image-grad-blue: linear-gradient(to right, #60a5fa, #3b82f6);
