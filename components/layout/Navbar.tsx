@@ -182,11 +182,17 @@ export default function Navbar() {
                 </Link>
 
                 <div className="flex items-center gap-4 z-50">
-                    {/* Toggles */}
-                    <div className="flex items-center gap-2 mix-blend-difference text-foreground">
+                    {/* Toggles - fade in when menu opens */}
+                    <motion.div
+                        className="flex items-center gap-2 mix-blend-difference text-foreground"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: isOpen ? 1 : 0 }}
+                        transition={{ duration: 0.3, delay: isOpen ? 0.2 : 0 }}
+                        style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
+                    >
                         <LanguageToggle />
                         <ThemeToggle />
-                    </div>
+                    </motion.div>
 
                     {/* Asterisk Toggle */}
                     <button
