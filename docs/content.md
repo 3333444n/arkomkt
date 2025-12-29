@@ -227,13 +227,28 @@ In your translation files (`messages/*.json`), use balanced tags:
 ### New Project
 1. Create MDX file in `content/projects/es/new-project.mdx`
 2. Create corresponding EN and FR versions
-3. Add images to `public/projects/new-project/`
+3. Add assets to `public/` following the conventions below.
 4. Build will pick up new content
 
 ### New Blog Post
 1. Create MDX file in `content/blog/es/new-post.mdx`
 2. Create corresponding EN and FR versions
-3. Add images to `public/blog/new-post/`
+3. Add images to `public/projects/[slug]/` (or `public/blog/[slug]/` once implemented).
+
+### Image Storage Conventions
+
+To keep the project organized, follow these paths for all assets in the `public/` directory:
+
+| Asset Type | Path Pattern | Recommended Format | Example |
+|------------|--------------|-------------------|---------|
+| **Project Hero/Gallery** | `public/projects/[slug]/` | `.webp` or `.jpg` | `/public/projects/techflow/hero.jpg` |
+| **Client Logos** | `public/logos/clients/` | `.svg` or `.png` (transparent) | `/public/logos/clients/techflow.svg` |
+| **Tool Logos** | `public/logos/tools/` | `.svg` or `.png` (transparent) | `/public/logos/tools/nextjs.svg` |
+| **Testimonial Photos** | `public/projects/[slug]/` | `.webp` or `.jpg` | `/public/projects/techflow/author.jpg` |
+| **General UI Icons** | `public/images/ui/` | `.svg` | `/public/images/ui/arrow.svg` |
+
+> [!TIP]
+> **WebP is highly recommended** for all photos (Hero, Gallery) as it offers the best balance between quality and small file size. For logos and icons, always prefer **SVG** to ensure they look sharp on all screen resolutions. If a logo has a background you can't remove, use a high-quality **PNG**.
 
 ### New Service
 1. Edit `data/services.json`
