@@ -40,7 +40,7 @@ export default function Clients() {
                 {/* Animated Track */}
                 <div className="flex w-fit animate-infinite-scroll items-center py-4">
                     {/* First set of logos */}
-                    <div className="flex gap-6 sm:gap-10 items-center pr-6 sm:pr-10">
+                    <div className="flex gap-3 sm:gap-10 items-center pr-3 sm:pr-10">
                         {clients.map((client: Client, index: number) => {
                             const logoSrc = client.logo || (currentTheme === 'dark' ? client.logoLight : client.logoDark);
 
@@ -70,7 +70,7 @@ export default function Clients() {
                     </div>
 
                     {/* Duplicate set for seamless loop */}
-                    <div className="flex gap-6 sm:gap-10 items-center pr-6 sm:pr-10">
+                    <div className="flex gap-3 sm:gap-10 items-center pr-3 sm:pr-10">
                         {clients.map((client: Client, index: number) => {
                             const logoSrc = client.logo || (currentTheme === 'dark' ? client.logoLight : client.logoDark);
 
