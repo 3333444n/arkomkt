@@ -21,8 +21,8 @@ const sidebarVariants: Variants = {
         transition: {
             delay: 0.3,
             type: "spring",
-            stiffness: 400,
-            damping: 40,
+            stiffness: 300,
+            damping: 35,
         },
     },
 };
@@ -84,8 +84,10 @@ export default function Navbar() {
 
     const height = 1500;
 
-    // Animation duration for closing (in ms)
-    const CLOSE_ANIMATION_DURATION = 600;
+    // Animation duration for closing (in ms) - must be long enough for animation to complete
+    const CLOSE_ANIMATION_DURATION = 800;
+    // Navigation delay - navigate once menu looks mostly closed
+    const NAV_DELAY = 500;
 
     const navLinks = [
         { name: t("home"), href: "/#home" },
@@ -133,24 +135,32 @@ export default function Navbar() {
         }
     }, [isOpen, openMenu, closeMenu]);
 
-    // Handle navigation with animation delay
+    // Handle navigation with smooth scroll for hash links
     const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         e.preventDefault();
         e.stopPropagation();
         closeMenu(); // Start closing animation
 
-        // Wait for animation to complete before navigating
-        setTimeout(() => {
-            router.push(href);
-        }, CLOSE_ANIMATION_DURATION);
-    }, [router, closeMenu]);
+        // Check if it's a hash link (same-page navigation)
+        const isHashLink = href.includes('#');
+        const hash = isHashLink ? href.split('#')[1] : null;
 
-    // Handle background click to close menu
-    const handleBackgroundClick = useCallback((e: React.MouseEvent) => {
-        if (e.target === e.currentTarget) {
-            closeMenu();
-        }
-    }, [closeMenu]);
+        setTimeout(() => {
+            if (hash) {
+                // Smooth scroll to the section
+                const element = document.getElementById(hash);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    // If element not found, use router (might be on different page)
+                    router.push(href);
+                }
+            } else {
+                // Regular navigation for non-hash links
+                router.push(href);
+            }
+        }, NAV_DELAY);
+    }, [router, closeMenu]);
 
     return (
         <motion.nav
@@ -201,12 +211,18 @@ export default function Navbar() {
             <motion.div
                 className="absolute top-0 left-0 w-full h-full bg-background/80 backdrop-blur-md border-r border-gray-light/20 shadow-2xl overflow-hidden"
                 variants={sidebarVariants}
-                onClick={handleBackgroundClick}
             >
+                {/* Clickable background to close menu */}
+                <div
+                    className="absolute inset-0 z-0"
+                    onClick={closeMenu}
+                    aria-hidden="true"
+                />
+
                 {/* Two Column Layout Container */}
                 <div
-                    className="flex flex-col md:flex-row h-full w-full px-4 md:px-12 lg:px-20 overflow-auto pt-24 pb-8"
-                    onClick={handleBackgroundClick}
+                    className="relative z-10 flex flex-col md:flex-row h-full w-full px-4 md:px-12 lg:px-20 overflow-auto pt-24 pb-8"
+                    onClick={closeMenu}
                 >
 
                     {/* Left Column - Social Links (Desktop) / Bottom (Mobile) */}
