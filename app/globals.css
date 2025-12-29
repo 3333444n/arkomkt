@@ -19,9 +19,7 @@
   --baby-purple: #ede9fe;
   --baby-green: #dcfce7;
 
-  /* Fonts */
-  --font-inter: "Inter", system-ui, sans-serif;
-  --font-times: "Times New Roman", Times, serif;
+  /* Fonts are loaded via next/font/google in app/[locale]/layout.tsx */
 }
 
 .dark {
@@ -52,8 +50,8 @@
   --color-baby-green: var(--baby-green);
 
   /* Font Families */
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-times);
+  --font-sans: var(--font-urbanist);
+  --font-serif: var(--font-instrument);
 
   /* Custom Gradients as background images */
   --background-image-grad-blue: linear-gradient(to right, #60a5fa, #3b82f6);
@@ -76,7 +74,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: var(--font-inter);
+    font-family: var(--font-sans);
   }
 
   h1,
@@ -85,7 +83,7 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-times);
+    font-family: var(--font-serif);
     @apply font-bold;
   }
 }

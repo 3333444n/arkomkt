@@ -59,42 +59,27 @@ Gradients are available as utility classes (e.g., `bg-grad-blue`).
 ## Typography
 
 ### Font Stack
-- **Sans-serif**: `Inter` (used for body text)
-- **Serif**: `Times New Roman` (used for headings)
+- **Sans-serif**: Used for body text.
+- **Serif**: Used for headings.
+
 ```css
---font-sans: var(--font-inter);
---font-serif: var(--font-times);
+--font-sans: var(--font-urbanist);
+--font-serif: var(--font-instrument);
 ```
 ### Font Setup
 
 Fonts are loaded using Next.js's `next/font/google` for optimal performance and zero layout shift.
 
-**Configuration in `app/layout.tsx`:**
-```typescript
-import { Inter } from 'next/font/google'
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en" className={inter.variable}>
-      <body>{children}</body>
-    </html>
-  )
-}
-```
+**Configuration in `app/[locale]/layout.tsx`:**
+Fonts are imported from `next/font/google` and configured with CSS variables.
 
 **Configuration in `app/globals.css`:**
 ```css
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-serif: ui-serif, Georgia, 'Times New Roman', serif;
+  --font-sans: var(--font-urbanist);
+  --font-serif: var(--font-instrument);
   /* ... other theme variables ... */
 }
 ```
