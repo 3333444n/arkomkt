@@ -1,12 +1,11 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/config";
+import { Link, useRouter } from "@/i18n/config";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
-import { useRef, useCallback } from "react";
-import { motion, useCycle, Variants, AnimatePresence } from "framer-motion";
-import { useRouter } from "next/navigation";
+import { useRef, useCallback, useState, useEffect } from "react";
+import { motion, Variants } from "framer-motion";
 
 const sidebarVariants: Variants = {
     open: (height = 1000) => ({
@@ -20,7 +19,7 @@ const sidebarVariants: Variants = {
     closed: {
         clipPath: "circle(24px at calc(100% - 48px) 36px)",
         transition: {
-            delay: 0.1,
+            delay: 0.3,
             type: "spring",
             stiffness: 400,
             damping: 40,
@@ -28,7 +27,7 @@ const sidebarVariants: Variants = {
     },
 };
 
-const navListVariants = {
+const navListVariants: Variants = {
     open: {
         transition: { staggerChildren: 0.07, delayChildren: 0.2 },
     },
@@ -37,7 +36,7 @@ const navListVariants = {
     },
 };
 
-const navItemVariants = {
+const navItemVariants: Variants = {
     open: {
         y: 0,
         opacity: 1,
@@ -54,15 +53,39 @@ const navItemVariants = {
     },
 };
 
+const socialContainerVariants: Variants = {
+    open: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            delay: 0.2,
+            duration: 0.2,
+        },
+    },
+    closed: {
+        opacity: 0,
+        y: 20,
+        transition: {
+            duration: 0.15,
+        },
+    },
+};
+
 
 export default function Navbar() {
     const t = useTranslations("Navbar");
     const tFooter = useTranslations("Footer");
-    const [isOpen, toggleOpen] = useCycle(false, true);
+    // isOpen controls the animation state (open/closed)
+    const [isOpen, setIsOpen] = useState(false);
+    // isMenuVisible controls whether the container stays h-screen (for animations to be visible)
+    const [isMenuVisible, setIsMenuVisible] = useState(false);
     const containerRef = useRef(null);
     const router = useRouter();
 
     const height = 1500;
+
+    // Animation duration for closing (in ms)
+    const CLOSE_ANIMATION_DURATION = 600;
 
     const navLinks = [
         { name: t("home"), href: "/#home" },
@@ -80,16 +103,54 @@ export default function Navbar() {
         { key: "youtube", name: tFooter("social.youtube"), href: tFooter("links.youtube") },
     ];
 
+    // When opening: make visible immediately, then animate open
+    // When closing: animate closed, then hide after animation completes
+    useEffect(() => {
+        if (isOpen) {
+            setIsMenuVisible(true);
+        } else {
+            // Keep visible during closing animation, then hide
+            const timer = setTimeout(() => {
+                setIsMenuVisible(false);
+            }, CLOSE_ANIMATION_DURATION);
+            return () => clearTimeout(timer);
+        }
+    }, [isOpen]);
+
+    const openMenu = useCallback(() => {
+        setIsOpen(true);
+    }, []);
+
+    const closeMenu = useCallback(() => {
+        setIsOpen(false);
+    }, []);
+
+    const toggleMenu = useCallback(() => {
+        if (isOpen) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    }, [isOpen, openMenu, closeMenu]);
+
     // Handle navigation with animation delay
     const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         e.preventDefault();
-        toggleOpen(); // Start closing animation
+        e.stopPropagation();
+        closeMenu(); // Start closing animation
 
         // Wait for animation to complete before navigating
         setTimeout(() => {
             router.push(href);
-        }, 500); // Match this with the animation duration
-    }, [toggleOpen, router]);
+        }, CLOSE_ANIMATION_DURATION);
+    }, [router, closeMenu]);
+
+    // Handle background click to close menu
+    const handleBackgroundClick = useCallback((e: React.MouseEvent) => {
+        if (e.target === e.currentTarget) {
+            closeMenu();
+        }
+    }, [closeMenu]);
 
     return (
         <motion.nav
@@ -97,10 +158,14 @@ export default function Navbar() {
             animate={isOpen ? "open" : "closed"}
             custom={height}
             ref={containerRef}
-            className={`fixed top-0 left-0 right-0 z-50 ${isOpen ? 'h-screen' : 'h-auto'}`}
+            className={`fixed top-0 left-0 right-0 z-50 ${isMenuVisible ? 'h-screen' : 'h-auto'}`}
+            style={{ pointerEvents: isMenuVisible ? 'auto' : 'none' }}
         >
-            {/* Header / Top Bar */}
-            <div className={`absolute top-0 left-0 right-0 z-50 flex justify-between items-center px-4 py-3 md:px-8 bg-background/80 backdrop-blur-md border-b border-gray-light transition-colors duration-300`}>
+            {/* Header / Top Bar - always clickable */}
+            <div
+                className="absolute top-0 left-0 right-0 z-50 flex justify-between items-center px-4 py-3 md:px-8 bg-background/80 backdrop-blur-md border-b border-gray-light transition-colors duration-300"
+                style={{ pointerEvents: 'auto' }}
+            >
                 {/* Logo */}
                 <Link href="/" className="text-xl font-bold tracking-tight z-50 mix-blend-difference text-foreground">
                     Arko <span className="text-baby-blue">MKT</span>
@@ -115,7 +180,7 @@ export default function Navbar() {
 
                     {/* Asterisk Toggle */}
                     <button
-                        onClick={() => toggleOpen()}
+                        onClick={toggleMenu}
                         className="w-12 h-12 flex items-center justify-center focus:outline-none mix-blend-difference text-foreground"
                         aria-label="Toggle Menu"
                     >
@@ -136,13 +201,17 @@ export default function Navbar() {
             <motion.div
                 className="absolute top-0 left-0 w-full h-full bg-background/80 backdrop-blur-md border-r border-gray-light/20 shadow-2xl overflow-hidden"
                 variants={sidebarVariants}
+                onClick={handleBackgroundClick}
             >
                 {/* Two Column Layout Container */}
-                <div className="flex flex-col md:flex-row h-full w-full px-4 md:px-12 lg:px-20 overflow-auto pt-24 pb-8">
+                <div
+                    className="flex flex-col md:flex-row h-full w-full px-4 md:px-12 lg:px-20 overflow-auto pt-24 pb-8"
+                    onClick={handleBackgroundClick}
+                >
 
                     {/* Left Column - Social Links (Desktop) / Bottom (Mobile) */}
                     <motion.div
-                        variants={navItemVariants}
+                        variants={socialContainerVariants}
                         className="order-2 md:order-1 md:w-1/3 flex flex-col justify-end md:justify-center items-start mt-12 md:mt-0 md:pr-8"
                     >
                         <div className="flex flex-col gap-3 md:gap-4">
@@ -152,6 +221,7 @@ export default function Navbar() {
                                     href={link.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
                                     className="flex items-center text-sm md:text-base text-gray-mid hover:text-foreground transition-colors group lowercase"
                                 >
                                     {link.name}
@@ -207,3 +277,4 @@ function ArrowIcon({ className }: { className?: string }) {
         </svg>
     )
 }
+
