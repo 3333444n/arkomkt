@@ -142,26 +142,7 @@ export default function Services() {
     const selectedItem = allItems.find(item => item.id === selectedServiceId);
     const cardInsertIndex = getSelectedItemRowEndIndex();
 
-    // Build the render array with the card inserted at the right position
-    const renderItems = useMemo(() => {
-        const items: (ItemType | { type: "card"; item: ItemType })[] = [];
 
-        allItems.forEach((item, index) => {
-            items.push(item);
-
-            // Insert card after this row
-            if (selectedItem && cardInsertIndex === index + 1) {
-                items.push({ type: "card", item: selectedItem });
-            }
-        });
-
-        // If card should be at the very end
-        if (selectedItem && cardInsertIndex === allItems.length) {
-            items.push({ type: "card", item: selectedItem });
-        }
-
-        return items;
-    }, [allItems, selectedItem, cardInsertIndex]);
 
     return (
         <section id="services" className="py-20 overflow-hidden bg-background">
@@ -191,99 +172,94 @@ export default function Services() {
                     ref={containerRef}
                     className="flex flex-wrap gap-x-2 gap-y-2.5 justify-center items-start w-full max-w-[75vw] mx-auto min-h-[300px]"
                 >
-                    {renderItems.map((renderItem, index) => {
-                        // Render the expanded card
-                        if ("type" in renderItem && renderItem.type === "card") {
-                            const item = renderItem.item;
-                            return (
-                                <AnimatePresence key={`card-container-${item.id}`}>
-                                    <motion.div
-                                        key={`card-${item.id}`}
-                                        initial={{ opacity: 0, height: 0 }}
-                                        animate={{ opacity: 1, height: "auto" }}
-                                        exit={{ opacity: 0, height: 0 }}
-                                        transition={{ duration: 0.4, ease: "circOut" }}
-                                        className="w-full flex-shrink-0 z-10"
-                                        style={{ flexBasis: "100%" }}
-                                    >
-                                        <div
-                                            className={`p-6 md:p-10 rounded-lg md:rounded-xl ${getColorClass(item.color)} text-static-white relative overflow-hidden`}
-                                            style={{
-                                                backgroundImage: item.color.startsWith("baby-")
-                                                    ? `url(/images/gradients/${item.color.replace("baby-", "")}.webp)`
-                                                    : "none",
-                                                backgroundSize: "cover",
-                                                backgroundPosition: "center",
-                                            }}
-                                        >
-                                            <button
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    setSelectedServiceId(null);
-                                                }}
-                                                className="absolute top-6 right-8 text-2xl md:text-3xl font-light hover:scale-110 transition-transform opacity-60 hover:opacity-100"
-                                            >
-                                                ×
-                                            </button>
-                                            <div className="max-w-3xl">
-                                                {/* <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 font-sans">
-                                                    {item.serviceData?.title[locale as keyof typeof item.serviceData.title] || item.serviceData?.title["es"]}
-                                                </h3> */}
-                                                <p className="text-base md:text-lg font-medium mb-3 md:mb-4 font-sans opacity-90 leading-relaxed">
-                                                    {item.serviceData?.subtitle[locale as keyof typeof item.serviceData.subtitle] || item.serviceData?.subtitle["es"]}
-                                                </p>
-                                                <p className="text-sm md:text-base mb-6 md:mb-8 font-sans leading-relaxed opacity-80">
-                                                    {item.serviceData?.description[locale as keyof typeof item.serviceData.description] || item.serviceData?.description["es"]}
-                                                </p>
-                                                <div className="pt-6 border-t border-white/20">
-                                                    <p className="text-xs md:text-sm italic font-sans opacity-70">
-                                                        {item.serviceData?.footer[locale as keyof typeof item.serviceData.footer] || item.serviceData?.footer["es"]}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                </AnimatePresence>
-                            );
-                        }
-
-                        // Render regular pill items
-                        const item = renderItem as ItemType;
+                    {allItems.map((item, index) => {
                         const isSelected = selectedServiceId === item.id;
                         const isService = item.type === "service";
 
                         return (
-                            <div
-                                key={item.id}
-                                ref={(el) => {
-                                    if (el) {
-                                        itemRefs.current.set(item.id, el);
-                                    } else {
-                                        itemRefs.current.delete(item.id);
-                                    }
-                                }}
-                                className="flex-shrink-0"
-                            >
-                                <motion.button
-                                    onClick={() => isService && handleServiceClick(item.id)}
-                                    whileHover={isService ? { scale: 1.05 } : {}}
-                                    className={`px-4 py-1.5 md:px-6 md:py-2 rounded-full ${getColorClass(item.color)} text-static-black text-sm md:text-lg whitespace-nowrap
-                                       ${item.type === "category" ? "font-sans cursor-default font-bold" : "font-sans cursor-pointer"}
-                                       ${isService ? (isSelected ? "font-bold" : "hover:font-bold") : ""}
-                                   `}
-                                    style={getGlowStyle(item.color, isSelected)}
-                                    animate={{
-                                        boxShadow: isSelected
-                                            ? getGlowStyle(item.color, true).boxShadow || "none"
-                                            : "none"
+                            <div key={item.id} className="contents">
+                                <div
+                                    ref={(el) => {
+                                        if (el) {
+                                            itemRefs.current.set(item.id, el);
+                                        } else {
+                                            itemRefs.current.delete(item.id);
+                                        }
                                     }}
-                                    transition={{ duration: 0.3 }}
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
+                                    className="flex-shrink-0"
                                 >
-                                    {item.label}
-                                </motion.button>
+                                    <motion.button
+                                        onClick={() => isService && handleServiceClick(item.id)}
+                                        whileHover={isService ? { scale: 1.05 } : {}}
+                                        className={`px-4 py-1.5 md:px-6 md:py-2 rounded-full ${getColorClass(item.color)} text-static-black text-sm md:text-lg whitespace-nowrap
+                                            ${item.type === "category" ? "font-sans cursor-default font-bold" : "font-sans cursor-pointer"}
+                                            ${isService ? (isSelected ? "font-bold" : "hover:font-bold") : ""}
+                                        `}
+                                        style={getGlowStyle(item.color, isSelected)}
+                                        animate={{
+                                            boxShadow: isSelected
+                                                ? getGlowStyle(item.color, true).boxShadow || "none"
+                                                : "none"
+                                        }}
+                                        transition={{ duration: 0.3 }}
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        {item.label}
+                                    </motion.button>
+                                </div>
+
+                                <AnimatePresence>
+                                    {selectedItem && cardInsertIndex === index + 1 && (
+                                        <motion.div
+                                            key={`card-${selectedItem.id}`}
+                                            initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                                            animate={{ opacity: 1, height: "auto", marginTop: 16 }}
+                                            exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                                            transition={{ duration: 0.4, ease: "circOut" }}
+                                            className="w-full flex-shrink-0 z-10 overflow-hidden"
+                                            style={{ flexBasis: "100%" }}
+                                        >
+                                            <div
+                                                className={`p-6 md:p-10 rounded-lg md:rounded-xl ${getColorClass(selectedItem.color)} text-static-white relative overflow-hidden`}
+                                                style={{
+                                                    backgroundImage: selectedItem.color.startsWith("baby-")
+                                                        ? `url(/images/gradients/${selectedItem.color.replace("baby-", "")}.webp)`
+                                                        : "none",
+                                                    backgroundSize: "cover",
+                                                    backgroundPosition: "center",
+                                                }}
+                                            >
+                                                <button
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setSelectedServiceId(null);
+                                                    }}
+                                                    className="absolute top-6 right-8 text-2xl md:text-3xl font-light hover:scale-110 transition-transform opacity-60 hover:opacity-100"
+                                                >
+                                                    ×
+                                                </button>
+                                                <div className="max-w-3xl">
+                                                    {/* <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 font-sans">
+                                                        {selectedItem.serviceData?.title[locale as keyof typeof selectedItem.serviceData.title] || selectedItem.serviceData?.title["es"]}
+                                                    </h3> */}
+                                                    <p className="text-base md:text-lg font-medium mb-3 md:mb-4 font-sans opacity-90 leading-relaxed">
+                                                        {selectedItem.serviceData?.subtitle[locale as keyof typeof selectedItem.serviceData.subtitle] || selectedItem.serviceData?.subtitle["es"]}
+                                                    </p>
+                                                    <p className="text-sm md:text-base mb-6 md:mb-8 font-sans leading-relaxed opacity-80">
+                                                        {selectedItem.serviceData?.description[locale as keyof typeof selectedItem.serviceData.description] || selectedItem.serviceData?.description["es"]}
+                                                    </p>
+                                                    <div className="pt-6 border-t border-white/20">
+                                                        <p className="text-xs md:text-sm italic font-sans opacity-70">
+                                                            {selectedItem.serviceData?.footer[locale as keyof typeof selectedItem.serviceData.footer] || selectedItem.serviceData?.footer["es"]}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </div>
                         );
                     })}
