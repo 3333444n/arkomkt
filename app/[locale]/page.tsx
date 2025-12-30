@@ -30,7 +30,7 @@ export default async function Home({
         <About />
         <Clients />
         <Services />
-        {/* <Projects projects={projects} locale={locale} /> */}
+        <Projects projects={projects} locale={locale} />
         <FAQ />
         <CTA />
       </main>

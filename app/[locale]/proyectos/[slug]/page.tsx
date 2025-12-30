@@ -19,6 +19,11 @@ function getFallbackImage(seed: string, index: number = 0) {
     return FALLBACK_IMAGES[(hash + index) % FALLBACK_IMAGES.length];
 }
 
+function getValidImage(src: string | undefined | null, seed: string, index: number = 0) {
+    if (src && src.trim().length > 0) return src;
+    return getFallbackImage(seed, index);
+}
+
 export async function generateStaticParams() {
     const slugs = await getProjectSlugs();
     return slugs.map((slug) => ({ slug }));
@@ -33,13 +38,6 @@ export default async function ProjectDetailPage({
     setRequestLocale(locale);
 
     const project = await getProject(slug, locale);
-    console.log('Project Data Debug:', {
-        slug: project?.slug,
-        coverImage: project?.coverImage,
-        clientLogo: project?.clientLogo,
-        testimonialPhoto: project?.testimonial?.photo,
-        fallbackCover: project ? getFallbackImage(project.slug) : 'no-project'
-    });
 
     if (!project) {
         notFound();
@@ -63,7 +61,7 @@ export default async function ProjectDetailPage({
                 {/* Hero Section */}
                 <div className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
                     <Image
-                        src={project.coverImage || getFallbackImage(project.slug)}
+                        src={getValidImage(project.coverImage, project.slug)}
                         alt={project.title}
                         fill
                         className="object-cover"
@@ -99,7 +97,7 @@ export default async function ProjectDetailPage({
                                     <h3 className="text-xs uppercase tracking-widest opacity-50 mb-3">Client</h3>
                                     <div className="flex items-center gap-3 mb-2 relative h-8">
                                         <Image
-                                            src={project.clientLogo || getFallbackImage(project.slug, 5)}
+                                            src={getValidImage(project.clientLogo, project.slug, 5)}
                                             alt={project.client}
                                             width={80}
                                             height={32}
@@ -151,7 +149,7 @@ export default async function ProjectDetailPage({
                                         </blockquote>
                                         <div className="flex items-center gap-3">
                                             <div className="relative w-10 h-10 rounded-full overflow-hidden bg-muted">
-                                                <Image src={project.testimonial.photo || getFallbackImage(project.slug, 6)} alt={project.testimonial.author} fill className="object-cover" />
+                                                <Image src={getValidImage(project.testimonial.photo, project.slug, 6)} alt={project.testimonial.author} fill className="object-cover" />
                                             </div>
                                             <div>
                                                 <p className="text-sm font-bold">{project.testimonial.author}</p>
@@ -175,7 +173,7 @@ export default async function ProjectDetailPage({
                                     {project.images.map((img, idx) => (
                                         <div key={idx} className="relative aspect-video rounded-xl overflow-hidden bg-muted">
                                             <Image
-                                                src={img || getFallbackImage(project.slug, idx + 1)}
+                                                src={getValidImage(img, project.slug, idx + 1)}
                                                 alt={`Gallery image ${idx + 1}`}
                                                 fill
                                                 className="object-cover hover:scale-105 transition-transform duration-700"
