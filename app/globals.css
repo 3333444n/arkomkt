@@ -11,13 +11,13 @@
   --gray-dark: #333333;
 
   /* Baby Palette */
-  --baby-pink: #fbcfe8;
-  --baby-blue: #dbeafe;
-  --baby-yellow: #fef3c7;
-  --baby-orange: #ffedd5;
-  --baby-red: #fee2e2;
-  --baby-purple: #ede9fe;
-  --baby-green: #dcfce7;
+  --baby-pink: #eaa5cd;
+  --baby-blue: #91b6e8;
+  --baby-yellow: #f3e199;
+  --baby-orange: #e6a96c;
+  --baby-red: #ec7c7c;
+  --baby-purple: #ccb0f3;
+  --baby-green: #90c596;
 
   /* Static Colors (theme-invariant - NOT overridden in .dark) */
   --static-black: #121212;

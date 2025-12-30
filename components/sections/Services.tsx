@@ -82,18 +82,10 @@ export default function Services() {
     const getGlowStyle = (color: string, isActive: boolean) => {
         if (!isActive) return {};
 
-        const glowColors: Record<string, string> = {
-            "baby-blue": "rgba(219, 234, 254, 0.8)",
-            "baby-green": "rgba(240, 253, 244, 0.8)",
-            "baby-pink": "rgba(251, 207, 232, 0.8)",
-            "baby-orange": "rgba(255, 237, 213, 0.8)",
-            "baby-purple": "rgba(237, 233, 254, 0.8)",
-            "baby-yellow": "rgba(254, 243, 199, 0.8)",
-            "baby-red": "rgba(254, 226, 226, 0.8)",
-        };
-        const glowColor = glowColors[color] || "rgba(255, 255, 255, 0.5)";
+        // Reference the CSS variables directly from globals.css
+        // Use color-mix to add transparency (80%) to the glow for a softer look
         return {
-            boxShadow: `0 0 20px 4px ${glowColor}`,
+            boxShadow: `0 0 20px 4px color-mix(in srgb, var(--${color}), transparent 20%)`,
         };
     };
 
@@ -215,7 +207,14 @@ export default function Services() {
                                         style={{ flexBasis: "100%" }}
                                     >
                                         <div
-                                            className={`p-6 md:p-10 rounded-lg md:rounded-xl ${getColorClass(item.color)} text-static-black relative overflow-hidden`}
+                                            className={`p-6 md:p-10 rounded-lg md:rounded-xl ${getColorClass(item.color)} text-static-white relative overflow-hidden`}
+                                            style={{
+                                                backgroundImage: item.color.startsWith("baby-")
+                                                    ? `url(/images/gradients/${item.color.replace("baby-", "")}.webp)`
+                                                    : "none",
+                                                backgroundSize: "cover",
+                                                backgroundPosition: "center",
+                                            }}
                                         >
                                             <button
                                                 onClick={(e) => {
@@ -236,7 +235,7 @@ export default function Services() {
                                                 <p className="text-sm md:text-base mb-6 md:mb-8 font-sans leading-relaxed opacity-80">
                                                     {item.serviceData?.description[locale as keyof typeof item.serviceData.description] || item.serviceData?.description["es"]}
                                                 </p>
-                                                <div className="pt-6 border-t border-black/10">
+                                                <div className="pt-6 border-t border-white/20">
                                                     <p className="text-xs md:text-sm italic font-sans opacity-70">
                                                         {item.serviceData?.footer[locale as keyof typeof item.serviceData.footer] || item.serviceData?.footer["es"]}
                                                     </p>
