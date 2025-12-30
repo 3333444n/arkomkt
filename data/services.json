@@ -12,24 +12,208 @@
                 {
                     "id": "video-editing",
                     "title": {
-                        "es": "Edición de Video",
+                        "es": "Edición de video",
                         "en": "Video Editing",
                         "fr": "Montage Vidéo"
                     },
                     "subtitle": {
-                        "es": "Contenido visual que impacta",
-                        "en": "Visual content that impacts",
-                        "fr": "Contenu visuel qui impacte"
+                        "es": "Cortes precisos y narrativa visual",
+                        "en": "Precise cuts and visual storytelling",
+                        "fr": "Coupes précises et narration visuelle"
                     },
                     "description": {
-                        "es": "Transformamos tus ideas en videos profesionales que capturan la atención de tu audiencia.",
-                        "en": "We transform your ideas into professional videos that capture your audience's attention.",
-                        "fr": "Nous transformons vos idées en vidéos professionnelles qui capturent l'attention de votre public."
+                        "es": "Transformamos material en bruto en una historia coherente y atractiva que capte la esencia de tu marca.",
+                        "en": "We transform raw footage into a coherent and engaging story that captures your brand's essence.",
+                        "fr": "Nous transformons les séquences brutes en une histoire cohérente et engageante qui capture l'essence de votre marque."
                     },
                     "footer": {
-                        "es": "Desde videos corporativos hasta contenido para redes sociales",
-                        "en": "From corporate videos to social media content",
-                        "fr": "Des vidéos d'entreprise au contenu pour les réseaux sociaux"
+                        "es": "Post-producción de alto nivel.",
+                        "en": "High-level post-production.",
+                        "fr": "Post-production de haut niveau."
+                    }
+                },
+                {
+                    "id": "repurposing",
+                    "title": {
+                        "es": "Repurposing de contenido",
+                        "en": "Content Repurposing",
+                        "fr": "Recyclage de Contenu"
+                    },
+                    "subtitle": {
+                        "es": "Multiplica el valor de tu contenido",
+                        "en": "Multiply your content's value",
+                        "fr": "Multipliez la valeur de votre contenu"
+                    },
+                    "description": {
+                        "es": "Adaptamos piezas largas en formatos cortos y dinámicos para maximizar el alcance en todas tus plataformas.",
+                        "en": "We adapt long pieces into short, dynamic formats to maximize reach across all your platforms.",
+                        "fr": "Nous adaptons les pièces longues en formats courts et dynamiques pour maximiser la portée sur toutes vos plateformes."
+                    },
+                    "footer": {
+                        "es": "Haz que tu contenido trabaje más para ti.",
+                        "en": "Make your content work harder for you.",
+                        "fr": "Faites travailler votre contenu plus dur pour vous."
+                    }
+                },
+                {
+                    "id": "organic-content",
+                    "title": {
+                        "es": "Generación de contenido orgánico",
+                        "en": "Organic Content Generation",
+                        "fr": "Génération de Contenu Organique"
+                    },
+                    "subtitle": {
+                        "es": "Conexión auténtica con tu audiencia",
+                        "en": "Authentic connection with your audience",
+                        "fr": "Connexion authentique avec votre public"
+                    },
+                    "description": {
+                        "es": "Creamos contenido que no parece publicidad, fomentando el compromiso y la lealtad de la comunidad.",
+                        "en": "We create content that doesn't feel like advertising, fostering community engagement and loyalty.",
+                        "fr": "Nous créons du contenu qui ne ressemble pas à de la publicité, favorisant l'engagement et la fidélité de la communauté."
+                    },
+                    "footer": {
+                        "es": "Resultados reales sin pauta.",
+                        "en": "Real results without paid ads.",
+                        "fr": "Résultats réels sans publicité payante."
+                    }
+                },
+                {
+                    "id": "social-ads-video",
+                    "title": {
+                        "es": "Comerciales para RRSS y YT",
+                        "en": "Social Media & YT Ads",
+                        "fr": "Publicités Réseaux Sociaux & YT"
+                    },
+                    "subtitle": {
+                        "es": "Impacto visual instantáneo",
+                        "en": "Instant visual impact",
+                        "fr": "Impact visuel instantané"
+                    },
+                    "description": {
+                        "es": "Diseñamos anuncios optimizados para cada plataforma que detienen el scroll y generan conversiones.",
+                        "en": "We design platform-optimized ads that stop the scroll and drive conversions.",
+                        "fr": "Nous concevons des publicités optimisées pour les plateformes qui arrêtent le défilement et génèrent des conversions."
+                    },
+                    "footer": {
+                        "es": "Vídeos pensados para vender.",
+                        "en": "Videos designed to sell.",
+                        "fr": "Vidéos conçues pour vendre."
+                    }
+                },
+                {
+                    "id": "video-recording",
+                    "title": {
+                        "es": "Grabación de video",
+                        "en": "Video Recording",
+                        "fr": "Enregistrement Vidéo"
+                    },
+                    "subtitle": {
+                        "es": "Captura cada detalle profesionalmente",
+                        "en": "Capture every detail professionally",
+                        "fr": "Capturez chaque détail professionnellement"
+                    },
+                    "description": {
+                        "es": "Producción en sitio con equipo profesional para garantizar la más alta calidad de imagen y sonido.",
+                        "en": "On-site production with professional equipment to guarantee the highest image and sound quality.",
+                        "fr": "Production sur site avec un équipement professionnel pour garantir la plus haute qualité d'image et de son."
+                    },
+                    "footer": {
+                        "es": "Calidad cinematográfica a tu alcance.",
+                        "en": "Cinematic quality at your fingertips.",
+                        "fr": "Qualité cinématographique à portée de main."
+                    }
+                },
+                {
+                    "id": "product-photography",
+                    "title": {
+                        "es": "Fotografía de producto",
+                        "en": "Product Photography",
+                        "fr": "Photographie de Produit"
+                    },
+                    "subtitle": {
+                        "es": "Tus productos como nunca antes",
+                        "en": "Your products like never before",
+                        "fr": "Vos produits comme jamais auparavant"
+                    },
+                    "description": {
+                        "es": "Resaltamos las mejores características de tus productos con iluminación y composición profesional.",
+                        "en": "We highlight your products' best features with professional lighting and composition.",
+                        "fr": "Nous mettons en valeur les meilleures caractéristiques de vos produits avec un éclairage et une composition professionnels."
+                    },
+                    "footer": {
+                        "es": "Imágenes que venden.",
+                        "en": "Images that sell.",
+                        "fr": "Des images qui vendent."
+                    }
+                },
+                {
+                    "id": "advertising-photography",
+                    "title": {
+                        "es": "Fotografía publicitaria",
+                        "en": "Advertising Photography",
+                        "fr": "Photographie Publicitaire"
+                    },
+                    "subtitle": {
+                        "es": "Conceptos que comunican",
+                        "en": "Concepts that communicate",
+                        "fr": "Des concepts qui communiquent"
+                    },
+                    "description": {
+                        "es": "Creamos imágenes conceptuales que transmiten los valores y el mensaje de tu marca de manera efectiva.",
+                        "en": "We create conceptual images that effectively convey your brand's values and message.",
+                        "fr": "Nous créons des images conceptuelles qui transmettent efficacement les valeurs et le message de votre marque."
+                    },
+                    "footer": {
+                        "es": "Arte al servicio de tu marca.",
+                        "en": "Art at your brand's service.",
+                        "fr": "L'art au service de votre marque."
+                    }
+                },
+                {
+                    "id": "360-tours",
+                    "title": {
+                        "es": "Recorridos 360",
+                        "en": "360 Tours",
+                        "fr": "Visites 360"
+                    },
+                    "subtitle": {
+                        "es": "Experiencias inmersivas",
+                        "en": "Immersive experiences",
+                        "fr": "Expériences immersives"
+                    },
+                    "description": {
+                        "es": "Permite que tus clientes exploren espacios de manera virtual con tecnología de punta interactiva.",
+                        "en": "Allow your customers to explore spaces virtually with cutting-edge interactive technology.",
+                        "fr": "Permettez à vos clients d'explorer des espaces virtuellement grâce a une technologie interactive de pointe."
+                    },
+                    "footer": {
+                        "es": "Lleva la realidad al mundo digital.",
+                        "en": "Bring reality to the digital world.",
+                        "fr": "Amenez la réalité dans le monde numérique."
+                    }
+                },
+                {
+                    "id": "drone-videography",
+                    "title": {
+                        "es": "Videografía con Drone",
+                        "en": "Drone Videography",
+                        "fr": "Vidéographie par Drone"
+                    },
+                    "subtitle": {
+                        "es": "Perspectivas aéreas impactantes",
+                        "en": "Stunning aerial perspectives",
+                        "fr": "Perspectives aériennes époustouflantes"
+                    },
+                    "description": {
+                        "es": "Capturamos tomas épicas desde el aire para añadir un valor cinematográfico único a tus proyectos.",
+                        "en": "We capture epic shots from the air to add unique cinematic value to your projects.",
+                        "fr": "Nous capturons des images épiques depuis les airs pour ajouter une valeur cinématographique unique à vos projets."
+                    },
+                    "footer": {
+                        "es": "Elevamos tu contenido.",
+                        "en": "We elevate your content.",
+                        "fr": "Nous élevons votre contenu."
                     }
                 }
             ]
@@ -42,7 +226,169 @@
                 "fr": "Développement"
             },
             "color": "baby-green",
-            "services": []
+            "services": [
+                {
+                    "id": "ecommerce",
+                    "title": {
+                        "es": "Desarrollo eCommerce",
+                        "en": "eCommerce Development",
+                        "fr": "Développement eCommerce"
+                    },
+                    "subtitle": {
+                        "es": "Ventas sin fronteras",
+                        "en": "Borderless sales",
+                        "fr": "Ventes sans frontières"
+                    },
+                    "description": {
+                        "es": "Creamos tiendas en línea robustas, seguras y optimizadas para convertir visitantes en clientes.",
+                        "en": "We create robust, secure online stores optimized to convert visitors into customers.",
+                        "fr": "Nous créons des boutiques en ligne robustes, sécurisées et optimisées pour convertir les visiteurs en clients."
+                    },
+                    "footer": {
+                        "es": "Tu negocio abierto 24/7.",
+                        "en": "Your business open 24/7.",
+                        "fr": "Votre entreprise ouverte 24/7."
+                    }
+                },
+                {
+                    "id": "landing-page",
+                    "title": {
+                        "es": "Landing page",
+                        "en": "Landing page",
+                        "fr": "Landing page"
+                    },
+                    "subtitle": {
+                        "es": "Enfoque en la conversión",
+                        "en": "Focus on conversion",
+                        "fr": "Focus sur la conversion"
+                    },
+                    "description": {
+                        "es": "Páginas de destino diseñadas específicamente para maximizar tus campañas de marketing.",
+                        "en": "Landing pages specifically designed to maximize your marketing campaigns.",
+                        "fr": "Pages de destination spécifiquement conçues pour maximiser vos campagnes marketing."
+                    },
+                    "footer": {
+                        "es": "Directo al objetivo.",
+                        "en": "Straight to the goal.",
+                        "fr": "Droit au but."
+                    }
+                },
+                {
+                    "id": "digital-menu",
+                    "title": {
+                        "es": "Menú digital",
+                        "en": "Digital Menu",
+                        "fr": "Menu Numérique"
+                    },
+                    "subtitle": {
+                        "es": "Moderniza tu restaurante",
+                        "en": "Modernize your restaurant",
+                        "fr": "Modernisez votre restaurant"
+                    },
+                    "description": {
+                        "es": "Soluciones interactivas para que tus clientes exploren tu oferta gastronómica de forma ágil.",
+                        "en": "Interactive solutions for your customers to explore your gastronomic offer quickly.",
+                        "fr": "Des solutions interactives pour que vos clients explorent votre offre gastronomique de manière agile."
+                    },
+                    "footer": {
+                        "es": "Atención rápida y moderna.",
+                        "en": "Fast and modern service.",
+                        "fr": "Service rapide et moderne."
+                    }
+                },
+                {
+                    "id": "mobile-app",
+                    "title": {
+                        "es": "App móvil",
+                        "en": "Mobile App",
+                        "fr": "App Mobile"
+                    },
+                    "subtitle": {
+                        "es": "Tu marca en el bolsillo del cliente",
+                        "en": "Your brand in the customer's pocket",
+                        "fr": "Votre marque dans la poche du client"
+                    },
+                    "description": {
+                        "es": "Desarrollo de aplicaciones nativas o híbridas con enfoque en la experiencia de usuario y rendimiento.",
+                        "en": "Native or hybrid app development focused on user experience and performance.",
+                        "fr": "Développement d'applications natives ou hybrides axé sur l'expérience utilisateur et les performances."
+                    },
+                    "footer": {
+                        "es": "Presencia móvil profesional.",
+                        "en": "Professional mobile presence.",
+                        "fr": "Présence mobile professionnelle."
+                    }
+                },
+                {
+                    "id": "seo-optimization",
+                    "title": {
+                        "es": "Optimización SEO",
+                        "en": "SEO Optimization",
+                        "fr": "Optimisation SEO"
+                    },
+                    "subtitle": {
+                        "es": "Aparece cuando te buscan",
+                        "en": "Appear when they search for you",
+                        "fr": "Apparaissez lorsqu'ils vous cherchent"
+                    },
+                    "description": {
+                        "es": "Estrategias on-page y técnicas para mejorar tu posicionamiento en los motores de búsqueda.",
+                        "en": "On-page and technical strategies to improve your positioning in search engines.",
+                        "fr": "Stratégies on-page et techniques pour améliorer votre positionnement dans les moteurs de recherche."
+                    },
+                    "footer": {
+                        "es": "Tráfico orgánico de calidad.",
+                        "en": "Quality organic traffic.",
+                        "fr": "Trafic organique de qualité."
+                    }
+                },
+                {
+                    "id": "ux-ui-design",
+                    "title": {
+                        "es": "Diseño UX/UI",
+                        "en": "UX/UI Design",
+                        "fr": "Design UX/UI"
+                    },
+                    "subtitle": {
+                        "es": "Interfaces intuitivas y bellas",
+                        "en": "Intuitive and beautiful interfaces",
+                        "fr": "Interfaces intuitives et belles"
+                    },
+                    "description": {
+                        "es": "Diseño centrado en el usuario para crear experiencias digitales fluidas y visualmente atractivas.",
+                        "en": "User-centered design to create fluid and visually attractive digital experiences.",
+                        "fr": "Conception centrée sur l'utilisateur pour créer des expériences numériques fluides et visuellement attrayantes."
+                    },
+                    "footer": {
+                        "es": "Funcionalidad y estética.",
+                        "en": "Functionality and aesthetics.",
+                        "fr": "Fonctionnalité et esthétique."
+                    }
+                },
+                {
+                    "id": "course-platform",
+                    "title": {
+                        "es": "Plataforma de cursos",
+                        "en": "Course Platform",
+                        "fr": "Plateforme de Cours"
+                    },
+                    "subtitle": {
+                        "es": "Monetiza tu conocimiento",
+                        "en": "Monetize your knowledge",
+                        "fr": "Monétisez vos connaissances"
+                    },
+                    "description": {
+                        "es": "Desarrollo de sistemas LMS personalizados para gestionar y vender tus cursos en línea.",
+                        "en": "Development of customized LMS systems to manage and sell your online courses.",
+                        "fr": "Développement de systèmes LMS personnalisés pour gérer et vendre vos cours en ligne."
+                    },
+                    "footer": {
+                        "es": "Educación digital escalable.",
+                        "en": "Scalable digital education.",
+                        "fr": "Éducation numérique évolutive."
+                    }
+                }
+            ]
         },
         {
             "id": "comunicacion",
@@ -52,7 +398,146 @@
                 "fr": "Communication"
             },
             "color": "baby-pink",
-            "services": []
+            "services": [
+                {
+                    "id": "copywriting",
+                    "title": {
+                        "es": "Copywriting",
+                        "en": "Copywriting",
+                        "fr": "Conception-Rédacteur"
+                    },
+                    "subtitle": {
+                        "es": "Palabras que venden",
+                        "en": "Words that sell",
+                        "fr": "Des mots qui vendent"
+                    },
+                    "description": {
+                        "es": "Redacción persuasiva diseñada para conectar emocionalmente y mover a la acción.",
+                        "en": "Persuasive writing designed to connect emotionally and move to action.",
+                        "fr": "Rédaction persuasive conçue pour se connecter émotionnellement et inciter à l'action."
+                    },
+                    "footer": {
+                        "es": "Contenido con propósito.",
+                        "en": "Purposeful content.",
+                        "fr": "Contenu avec un but."
+                    }
+                },
+                {
+                    "id": "community-management",
+                    "title": {
+                        "es": "Community Management",
+                        "en": "Community Management",
+                        "fr": "Community Management"
+                    },
+                    "subtitle": {
+                        "es": "Gestionamos tu voz social",
+                        "en": "We manage your social voice",
+                        "fr": "Nous gérons votre voix sociale"
+                    },
+                    "description": {
+                        "es": "Administración profesional de redes sociales para construir y mantener una comunidad activa.",
+                        "en": "Professional social media administration to build and maintain an active community.",
+                        "fr": "Administration professionnelle des réseaux sociaux pour construire et maintenir une communauté active."
+                    },
+                    "footer": {
+                        "es": "Tu marca siempre presente.",
+                        "en": "Your brand always present.",
+                        "fr": "Votre marque toujours présente."
+                    }
+                },
+                {
+                    "id": "profile-optimization",
+                    "title": {
+                        "es": "Optimización de perfiles",
+                        "en": "Profile Optimization",
+                        "fr": "Optimisation de Profils"
+                    },
+                    "subtitle": {
+                        "es": "Tu mejor cara digital",
+                        "en": "Your best digital face",
+                        "fr": "Votre meilleur visage numérique"
+                    },
+                    "description": {
+                        "es": "Ajuste de bios, catálogos y aesthetics de perfiles para proyectar profesionalismo.",
+                        "en": "Bios, catalogs, and profile aesthetics adjustment to project professionalism.",
+                        "fr": "Ajustement des bios, catalogues et esthétique des profils pour projeter le professionnalisme."
+                    },
+                    "footer": {
+                        "es": "Primera impresión impecable.",
+                        "en": "Impeccable first impression.",
+                        "fr": "Première impression impeccable."
+                    }
+                },
+                {
+                    "id": "ai-chatbots",
+                    "title": {
+                        "es": "Chatbots con IA",
+                        "en": "AI Chatbots",
+                        "fr": "Chatbots IA"
+                    },
+                    "subtitle": {
+                        "es": "Automatización inteligente",
+                        "en": "Smart automation",
+                        "fr": "Automatisation intelligente"
+                    },
+                    "description": {
+                        "es": "Implementación de asistentes virtuales capaces de resolver dudas y agilizar la atención al cliente.",
+                        "en": "Implementation of virtual assistants capable of solving doubts and speeding up customer service.",
+                        "fr": "Mise en œuvre d'assistants virtuels capables de résoudre les doutes et d'accélérer le service client."
+                    },
+                    "footer": {
+                        "es": "Atención instantánea 24/7.",
+                        "en": "Instant 24/7 attention.",
+                        "fr": "Attention instantanée 24/7."
+                    }
+                },
+                {
+                    "id": "email-marketing",
+                    "title": {
+                        "es": "Email Marketing",
+                        "en": "Email Marketing",
+                        "fr": "Email Marketing"
+                    },
+                    "subtitle": {
+                        "es": "Directo a la bandeja de entrada",
+                        "en": "Straight to the inbox",
+                        "fr": "Directement dans la boîte de réception"
+                    },
+                    "description": {
+                        "es": "Campañas de correo electrónico segmentadas para fidelizar clientes e incrementar ventas.",
+                        "en": "Segmented email campaigns to build customer loyalty and increase sales.",
+                        "fr": "Campagnes d'e-mailing segmentées pour fidéliser les clients et augmenter les ventes."
+                    },
+                    "footer": {
+                        "es": "Comunicación efectiva.",
+                        "en": "Effective communication.",
+                        "fr": "Communication efficace."
+                    }
+                },
+                {
+                    "id": "community-handling",
+                    "title": {
+                        "es": "Manejo de comunidad (Discord, IG, etc)",
+                        "en": "Community Management (Discord, IG, etc)",
+                        "fr": "Gestion de Communauté (Discord, IG, etc)"
+                    },
+                    "subtitle": {
+                        "es": "Modera y dinamiza",
+                        "en": "Moderate and energize",
+                        "fr": "Modérer et dynamiser"
+                    },
+                    "description": {
+                        "es": "Gestión activa de canales de comunicación directa para fomentar la participación y el sentido de pertenencia.",
+                        "en": "Active management of direct communication channels to foster participation and a sense of belonging.",
+                        "fr": "Gestion active des canaux de communication directe pour favoriser la participation et le sentiment d'appartenance."
+                    },
+                    "footer": {
+                        "es": "Crecimiento orgánico real.",
+                        "en": "Real organic growth.",
+                        "fr": "Croissance organique réelle."
+                    }
+                }
+            ]
         },
         {
             "id": "diseno",
@@ -62,7 +547,192 @@
                 "fr": "Design"
             },
             "color": "baby-orange",
-            "services": []
+            "services": [
+                {
+                    "id": "brand-development",
+                    "title": {
+                        "es": "Desarrollo de marca",
+                        "en": "Brand Development",
+                        "fr": "Développement de Marque"
+                    },
+                    "subtitle": {
+                        "es": "Identidad con esencia",
+                        "en": "Identity with essence",
+                        "fr": "Identité avec essence"
+                    },
+                    "description": {
+                        "es": "Construimos marcas desde cero, definiendo su propósito, valores y personalidad única.",
+                        "en": "We build brands from scratch, defining their purpose, values, and unique personality.",
+                        "fr": "Nous construisons des marques à partir de zéro, en définissant leur objectif, leurs valeurs et leur personnalité unique."
+                    },
+                    "footer": {
+                        "es": "Marcas con alma.",
+                        "en": "Brands with soul.",
+                        "fr": "Des marques avec une âme."
+                    }
+                },
+                {
+                    "id": "ads-design",
+                    "title": {
+                        "es": "Anuncios",
+                        "en": "Ads",
+                        "fr": "Publicités"
+                    },
+                    "subtitle": {
+                        "es": "Diseño para impactar",
+                        "en": "Design to impact",
+                        "fr": "Conception pour impacter"
+                    },
+                    "description": {
+                        "es": "Piezas gráficas optimizadas para captar la atención en cualquier entorno publicitario.",
+                        "en": "Graphic pieces optimized to capture attention in any advertising environment.",
+                        "fr": "Pièces graphiques optimisées pour capter l'attention dans tout environnement publicitaire."
+                    },
+                    "footer": {
+                        "es": "Creatividad al servicio del ROI.",
+                        "en": "Creativity at the service of ROI.",
+                        "fr": "La créativité au service du ROI."
+                    }
+                },
+                {
+                    "id": "branding-naming",
+                    "title": {
+                        "es": "Branding y Naming",
+                        "en": "Branding & Naming",
+                        "fr": "Branding & Naming"
+                    },
+                    "subtitle": {
+                        "es": "Nombre e imagen inolvidables",
+                        "en": "Unforgettable name and image",
+                        "fr": "Nom et image inoubliables"
+                    },
+                    "description": {
+                        "es": "Estrategia creativa para encontrar el nombre perfecto y la identidad visual que lo acompañe.",
+                        "en": "Creative strategy to find the perfect name and the visual identity to accompany it.",
+                        "fr": "Stratégie créative pour trouver le nom parfait et l'identité visuelle qui l'accompagne."
+                    },
+                    "footer": {
+                        "es": "Tu identidad empieza aquí.",
+                        "en": "Your identity starts here.",
+                        "fr": "Votre identité commence ici."
+                    }
+                },
+                {
+                    "id": "meta-ads-creatives",
+                    "title": {
+                        "es": "Creativos para Meta Ads",
+                        "en": "Meta Ads Creatives",
+                        "fr": "Créations Meta Ads"
+                    },
+                    "subtitle": {
+                        "es": "Alto CTR garantizado",
+                        "en": "High CTR guaranteed",
+                        "fr": "CTR élevé garanti"
+                    },
+                    "description": {
+                        "es": "Diseños específicos para Facebook e Instagram que maximizan el rendimiento de tus campañas.",
+                        "en": "Specific designs for Facebook and Instagram that maximize your campaigns' performance.",
+                        "fr": "Conceptions spécifiques pour Facebook et Instagram qui maximisent les performances de vos campagnes."
+                    },
+                    "footer": {
+                        "es": "Vende más con mejor diseño.",
+                        "en": "Sell more with better design.",
+                        "fr": "Vendez plus avec un meilleur design."
+                    }
+                },
+                {
+                    "id": "social-carousels",
+                    "title": {
+                        "es": "Carruseles para RRSS",
+                        "en": "Social Media Carousels",
+                        "fr": "Carrousels Réseaux Sociaux"
+                    },
+                    "subtitle": {
+                        "es": "Contenido educativo y dinámico",
+                        "en": "Educational and dynamic content",
+                        "fr": "Contenu éducatif et dynamique"
+                    },
+                    "description": {
+                        "es": "Narrativas visuales en formato carrusel para aumentar el tiempo de permanencia y el engagement.",
+                        "en": "Visual narratives in carousel format to increase dwell time and engagement.",
+                        "fr": "Narrations visuelles au format carrousel pour augmenter le temps de séjour et l'engagement."
+                    },
+                    "footer": {
+                        "es": "Historias que deslizan.",
+                        "en": "Stories that slide.",
+                        "fr": "Des histoires qui glissent."
+                    }
+                },
+                {
+                    "id": "brochures-menus",
+                    "title": {
+                        "es": "Brochures y menús",
+                        "en": "Brochures & Menus",
+                        "fr": "Brochures & Menus"
+                    },
+                    "subtitle": {
+                        "es": "Diseño editorial y comercial",
+                        "en": "Editorial and commercial design",
+                        "fr": "Conception éditoriale et commerciale"
+                    },
+                    "description": {
+                        "es": "Layouts profesionales para presentar tus servicios o productos de manera física o digital.",
+                        "en": "Professional layouts to present your services or products physically or digitally.",
+                        "fr": "Mises en page professionnelles pour présenter vos services ou produits physiquement ou numériquement."
+                    },
+                    "footer": {
+                        "es": "Calidad en cada página.",
+                        "en": "Quality on every page.",
+                        "fr": "La qualité à chaque page."
+                    }
+                },
+                {
+                    "id": "stationery",
+                    "title": {
+                        "es": "Papelería",
+                        "en": "Stationery",
+                        "fr": "Papeterie"
+                    },
+                    "subtitle": {
+                        "es": "Tangible y profesional",
+                        "en": "Tangible and professional",
+                        "fr": "Tangible et professionnel"
+                    },
+                    "description": {
+                        "es": "Diseño de tarjetas, hojas membretadas y todo lo necesario para tu identidad corporativa física.",
+                        "en": "Design of business cards, letterheads, and everything needed for your physical corporate identity.",
+                        "fr": "Conception de cartes de visite, de papier à en-tête et de tout ce qui est nécessaire pour votre identité d'entreprise physique."
+                    },
+                    "footer": {
+                        "es": "Tu marca en manos de tus clientes.",
+                        "en": "Your brand in your customers' hands.",
+                        "fr": "Votre marque entre les mains de vos clients."
+                    }
+                },
+                {
+                    "id": "ebooks",
+                    "title": {
+                        "es": "Ebooks",
+                        "en": "Ebooks",
+                        "fr": "Ebooks"
+                    },
+                    "subtitle": {
+                        "es": "Contenido de valor estructurado",
+                        "en": "Structured value content",
+                        "fr": "Contenu à valeur structuré"
+                    },
+                    "description": {
+                        "es": "Diseño y diagramación de libros digitales para captación de leads o material educativo.",
+                        "en": "Design and layout of digital books for lead generation or educational material.",
+                        "fr": "Conception et mise en page de livres numériques pour la génération de prospects ou le matériel pédagogique."
+                    },
+                    "footer": {
+                        "es": "Posiciónate como experto.",
+                        "en": "Position yourself as an expert.",
+                        "fr": "Positionnez-vous comme un expert."
+                    }
+                }
+            ]
         },
         {
             "id": "performance-marketing",
@@ -72,7 +742,54 @@
                 "fr": "Performance Marketing"
             },
             "color": "baby-purple",
-            "services": []
+            "services": [
+                {
+                    "id": "meta-ads-management",
+                    "title": {
+                        "es": "Manejo de Meta Ads",
+                        "en": "Meta Ads Management",
+                        "fr": "Gestion Meta Ads"
+                    },
+                    "subtitle": {
+                        "es": "Resultados escalables",
+                        "en": "Scalable results",
+                        "fr": "Résultats évolutifs"
+                    },
+                    "description": {
+                        "es": "Gestión estratégica de campañas en FB e IG enfocada en retorno de inversión.",
+                        "en": "Strategic campaign management on FB and IG focused on return on investment.",
+                        "fr": "Gestion stratégique des campagnes sur FB et IG axée sur le retour sur investissement."
+                    },
+                    "footer": {
+                        "es": "Maximizamos tu inversión.",
+                        "en": "We maximize your investment.",
+                        "fr": "Nous maximisons votre investissement."
+                    }
+                },
+                {
+                    "id": "google-ads-management",
+                    "title": {
+                        "es": "Manejo de Google Ads",
+                        "en": "Google Ads Management",
+                        "fr": "Gestion Google Ads"
+                    },
+                    "subtitle": {
+                        "es": "Captura la intención de búsqueda",
+                        "en": "Capture search intent",
+                        "fr": "Capturez l'intention de recherche"
+                    },
+                    "description": {
+                        "es": "Campañas de búsqueda y display para aparecer justo cuando tus clientes te necesitan.",
+                        "en": "Search and display campaigns to appear right when your customers need you.",
+                        "fr": "Campagnes de recherche et d'affichage pour apparaître juste au moment où vos clients ont besoin de vous."
+                    },
+                    "footer": {
+                        "es": "Visibilidad donde importa.",
+                        "en": "Visibility where it matters.",
+                        "fr": "Visibilité là où ça compte."
+                    }
+                }
+            ]
         },
         {
             "id": "asesoria",
@@ -82,7 +799,31 @@
                 "fr": "Conseil"
             },
             "color": "baby-yellow",
-            "services": []
+            "services": [
+                {
+                    "id": "ai-consultation",
+                    "title": {
+                        "es": "Consulta de IA",
+                        "en": "AI Consultation",
+                        "fr": "Consultation IA"
+                    },
+                    "subtitle": {
+                        "es": "El futuro de tu negocio hoy",
+                        "en": "The future of your business today",
+                        "fr": "L'avenir de votre entreprise aujourd'hui"
+                    },
+                    "description": {
+                        "es": "Asesoría estratégica para implementar herramientas de Inteligencia Artificial que optimicen tus procesos.",
+                        "en": "Strategic advice to implement Artificial Intelligence tools that optimize your processes.",
+                        "fr": "Conseils stratégiques pour mettre en œuvre des outils d'Intelligence Artificielle qui optimisent vos processus."
+                    },
+                    "footer": {
+                        "es": "Innovación sin fricción.",
+                        "en": "Frictionless innovation.",
+                        "fr": "Innovation sans friction."
+                    }
+                }
+            ]
         }
     ]
 }
