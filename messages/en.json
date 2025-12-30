@@ -55,6 +55,9 @@
     },
     "FAQ": {
         "title": "Frequently Asked Questions",
+        "description": "Have doubts about how we work? Here we solve the most common questions to help you take the next step with confidence.",
+        "stillQuestions": "Still have questions?",
+        "contactButton": "Send us a message",
         "items": [
             {
                 "question": "How long does a project take?",

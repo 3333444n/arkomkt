@@ -55,6 +55,9 @@
     },
     "FAQ": {
         "title": "Preguntas Frecuentes",
+        "description": "¿Tienes dudas sobre cómo trabajamos? Aquí resolvemos las preguntas más comunes para ayudarte a dar el siguiente paso con confianza.",
+        "stillQuestions": "¿Aún tienes dudas?",
+        "contactButton": "Enviarnos un mensaje",
         "items": [
             {
                 "question": "¿Cuánto tiempo toma un proyecto?",
