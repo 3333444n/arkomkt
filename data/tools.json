@@ -1,13 +1,18 @@
 {
     "NextJS": "/logos/tools/nextjs.svg",
     "Tailwind": "/logos/tools/tailwind.svg",
-    "Figma": "/logos/tools/figma.svg",
+    "Figma": "/logos/tools/figma.png",
     "React": "/logos/tools/react.svg",
     "TypeScript": "/logos/tools/typescript.svg",
-    "Adobe Premiere": "/logos/tools/premiere.svg",
-    "Adobe After Effects": "/logos/tools/after-effects.svg",
-    "DaVinci Resolve": "/logos/tools/davinci.svg",
+    "Adobe Premiere": "/logos/tools/premiere.png",
+    "Adobe After Effects": "/logos/tools/after.png",
+    "DaVinci Resolve": "/logos/tools/davinci.png",
     "Blender": "/logos/tools/blender.svg",
-    "Photoshop": "/logos/tools/photoshop.svg",
-    "Illustrator": "/logos/tools/illustrator.svg"
+    "Photoshop": "/logos/tools/photoshop.png",
+    "Illustrator": "/logos/tools/illustrator.png",
+    "GitHub": "/logos/tools/github.png",
+    "Vercel": "/logos/tools/vercel.svg",
+    "Notion": "/logos/tools/notion.png",
+    "Lightroom": "/logos/tools/lightroom.png",
+    "Affinity": "/logos/tools/affinity.png"
 }
