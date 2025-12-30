@@ -192,7 +192,7 @@ export default function Services() {
                                         onClick={() => isService && handleServiceClick(item.id)}
                                         whileHover={isService ? { scale: 1.05 } : {}}
                                         className={`px-4 py-1.5 md:px-6 md:py-2 rounded-full ${getColorClass(item.color)} text-static-black text-sm md:text-lg whitespace-nowrap
-                                            ${item.type === "category" ? "font-sans cursor-default font-bold" : "font-sans cursor-pointer"}
+                                            ${item.type === "category" ? "font-sans cursor-default font-bold uppercase" : "font-sans cursor-pointer"}
                                             ${isService ? (isSelected ? "font-bold" : "hover:font-bold") : ""}
                                         `}
                                         style={getGlowStyle(item.color, isSelected)}
