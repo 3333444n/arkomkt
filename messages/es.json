@@ -74,8 +74,9 @@
         ]
     },
     "CTA": {
-        "title": "Trabajemos Juntos",
-        "button": "Ponte en contacto"
+        "title": "Hagamos algo extraordinario.",
+        "description": "Tu marca tiene una historia que contar y nosotros las herramientas para que el mundo la escuche. Potenciamos tu visión con el poder del marketing y la IA.",
+        "button": "¡Hablemos de tu idea!"
     },
     "Contact": {
         "title": "Inicia tu Proyecto",

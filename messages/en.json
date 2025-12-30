@@ -74,8 +74,9 @@
         ]
     },
     "CTA": {
-        "title": "Let's Work Together",
-        "button": "Get in touch"
+        "title": "Let's create something extraordinary.",
+        "description": "Your brand has a story to tell, and we have the tools to make the world listen. We empower your vision with the power of marketing and AI.",
+        "button": "Let's talk about your idea!"
     },
     "Contact": {
         "title": "Start Your Project",

@@ -75,8 +75,9 @@
         ]
     },
     "CTA": {
-        "title": "Travaillons Ensemble",
-        "button": "Contactez-nous"
+        "title": "Créons quelque chose d'extraordinaire.",
+        "description": "Votre marque a une histoire à raconter, et nous avons les outils pour que le monde l'écoute. Nous propulsons votre vision grâce au marketing et à l'IA.",
+        "button": "Parlons de votre idée !"
     },
     "Contact": {
         "title": "Commencez Votre Projet",

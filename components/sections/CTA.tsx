@@ -9,7 +9,7 @@ export default function CTA() {
 
     return (
         <section className="py-10 mx-5">
-            <div className="relative min-h-[50vh] min-w-[90vw] w-full rounded-[2rem] md:rounded-[3rem] overflow-hidden flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('/images/gradients/gradient2.webp')" }}>
+            <div className="relative min-h-[80vh] min-w-[90vw] w-full rounded-[2rem] md:rounded-[3rem] overflow-hidden flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('/images/gradients/gradient2.webp')" }}>
                 <div className="container mx-auto px-8 md:px-16 text-center">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -18,8 +18,11 @@ export default function CTA() {
                         transition={{ duration: 0.6 }}
                         className="max-w-3xl mx-auto"
                     >
-                        <h2 className="text-4xl md:text-6xl font-sans mb-12 text-static-white">{t("title")}</h2>
-                        <Link href="/contacto" className="bg-static-white text-static-black px-12 py-4 rounded-full font-bold text-lg hover:shadow-xl transition-all shadow-lg hover:scale-105 active:scale-95">
+                        <h2 className="text-4xl md:text-6xl font-sans mb-6 text-static-white">{t("title")}</h2>
+                        <p className="text-lg md:text-xl text-static-white/90 mb-10 max-w-2xl mx-auto">
+                            {t("description")}
+                        </p>
+                        <Link href="/contacto" className="inline-block bg-static-white text-static-black px-12 py-4 rounded-full font-bold text-lg hover:shadow-xl transition-all shadow-lg hover:scale-105 active:scale-95">
                             {t("button")}
                         </Link>
                     </motion.div>
