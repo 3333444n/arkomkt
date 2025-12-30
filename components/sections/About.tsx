@@ -9,7 +9,7 @@ export default function About() {
 
     return (
         <section id="about" className="py-10 px-5">
-            <div className="relative min-h-[75vh] w-full mx-auto rounded-[2rem] md:rounded-[3rem] overflow-hidden flex items-center bg-cover bg-center" style={{ backgroundImage: "url('/images/gradients/gradient1.webp')" }}>
+            <div className="relative min-h-[80vh] w-full mx-auto rounded-[2rem] md:rounded-[3rem] overflow-hidden flex items-center bg-cover bg-center" style={{ backgroundImage: "url('/images/gradients/gradient1.webp')" }}>
                 <div className="container mx-auto px-8 md:px-16 lg:px-24">
                     <div className="max-w-4xl text-left">
                         <motion.h2
