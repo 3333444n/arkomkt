@@ -9,7 +9,7 @@ export default function CTA() {
 
     return (
         <section className="py-10 mx-5">
-            <div className="relative min-h-[80vh] min-w-[90vw] w-full rounded-[2rem] md:rounded-[3rem] overflow-hidden flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('/images/gradients/gradient2.webp')" }}>
+            <div className="relative min-h-[80vh] w-full rounded-[2rem] md:rounded-[3rem] overflow-hidden flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('/images/gradients/gradient2.webp')" }}>
                 <div className="container mx-auto px-8 md:px-16 text-center">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
