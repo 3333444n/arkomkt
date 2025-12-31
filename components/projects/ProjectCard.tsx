@@ -25,7 +25,7 @@ export default function ProjectCard({ project, locale, priority = false }: Proje
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.3 }}
-            className="group flex flex-col h-full !bg-foreground/10 dark:!bg-white/10 backdrop-blur-md rounded-3xl overflow-hidden border border-gray-light transition-colors text-foreground"
+            className="group flex flex-col h-full bg-gray-light dark:bg-gray-light backdrop-blur-md rounded-3xl overflow-hidden border border-gray-light transition-colors text-foreground"
         >
             <Link href={`/${locale}/proyectos/${project.slug}`} className="flex flex-col h-full">
                 {/* Image Container */}
