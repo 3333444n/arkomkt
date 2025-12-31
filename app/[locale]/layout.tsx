@@ -22,6 +22,24 @@ const serif = Instrument_Serif({
 export const metadata: Metadata = {
   title: "Arko MKT",
   description: "Digital Marketing & AI Agency",
+  icons: {
+    icon: "/logos/icon-white.svg",
+    apple: "/logos/icon-white.svg",
+  },
+  openGraph: {
+    images: [
+      {
+        url: "/images/gradients/gradient1.webp",
+        width: 1200,
+        height: 630,
+        alt: "Arko MKT Gradient",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/images/gradients/gradient1.webp"],
+  },
 };
 
 export async function generateStaticParams() {

@@ -6,6 +6,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
 import { useRef, useCallback, useState, useEffect } from "react";
 import { motion, Variants } from "framer-motion";
+import Image from "next/image";
 
 const sidebarVariants: Variants = {
     open: (height = 1000) => ({
@@ -177,8 +178,23 @@ export default function Navbar() {
                 style={{ pointerEvents: 'auto' }}
             >
                 {/* Logo */}
-                <Link href="/" className="text-xl font-bold tracking-tight z-50 mix-blend-difference text-foreground">
-                    Arko <span className="text-baby-blue">MKT</span>
+                <Link href="/" className="z-50 flex items-center">
+                    <Image
+                        src="/logos/icon-white.svg"
+                        alt="Arko MKT"
+                        width={120}
+                        height={40}
+                        className="h-15 w-auto dark:hidden"
+                        priority
+                    />
+                    <Image
+                        src="/logos/icon-black.svg"
+                        alt="Arko MKT"
+                        width={120}
+                        height={40}
+                        className="h-15 w-auto hidden dark:block"
+                        priority
+                    />
                 </Link>
 
                 <div className="flex items-center gap-4 z-50">
