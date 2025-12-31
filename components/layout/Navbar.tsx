@@ -180,19 +180,19 @@ export default function Navbar() {
                 {/* Logo */}
                 <Link href="/" className="z-50 flex items-center">
                     <Image
-                        src="/logos/icon-white.svg"
+                        src="/logos/iso-black.svg"
                         alt="Arko MKT"
                         width={120}
                         height={40}
-                        className="h-12 w-auto dark:hidden"
+                        className="h-8 w-auto dark:hidden"
                         priority
                     />
                     <Image
-                        src="/logos/icon-black.svg"
+                        src="/logos/iso-white.svg"
                         alt="Arko MKT"
                         width={120}
                         height={40}
-                        className="h-12 w-auto hidden dark:block"
+                        className="h-8 w-auto hidden dark:block"
                         priority
                     />
                 </Link>
