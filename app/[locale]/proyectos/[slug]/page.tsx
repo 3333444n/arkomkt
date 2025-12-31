@@ -1,4 +1,6 @@
 import { getProject, getProjectSlugs, getToolLogo } from "@/lib/content";
+import { getValidImage } from "@/lib/utils";
+
 import { setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -7,22 +9,7 @@ import { getServiceCategoryName } from "@/lib/services";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-const FALLBACK_IMAGES = [
-    '/images/gradients/gradient1.webp',
-    '/images/gradients/gradient2.webp',
-    '/images/gradients/gradient3.webp',
-    '/images/gradients/gradient4.webp'
-];
 
-function getFallbackImage(seed: string, index: number = 0) {
-    const hash = seed.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-    return FALLBACK_IMAGES[(hash + index) % FALLBACK_IMAGES.length];
-}
-
-function getValidImage(src: string | undefined | null, seed: string, index: number = 0) {
-    if (src && src.trim().length > 0) return src;
-    return getFallbackImage(seed, index);
-}
 
 export async function generateStaticParams() {
     const slugs = await getProjectSlugs();

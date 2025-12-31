@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Project } from "@/lib/content";
 import { getServiceCategoryColor, getServiceCategoryName } from "@/lib/services";
-import { cn } from "@/lib/utils";
+import { cn, getValidImage } from "@/lib/utils";
+
 
 interface ProjectCardProps {
     project: Project;
@@ -31,7 +32,7 @@ export default function ProjectCard({ project, locale, priority = false }: Proje
                 {/* Image Container */}
                 <div className="relative aspect-[16/10] overflow-hidden bg-muted">
                     <Image
-                        src={project.coverImage}
+                        src={getValidImage(project.coverImage, project.slug)}
                         alt={project.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -42,7 +43,7 @@ export default function ProjectCard({ project, locale, priority = false }: Proje
                     {/* Overlay with Client Logo */}
                     <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm p-2 rounded-xl shadow-sm z-10 transition-opacity opacity-90 group-hover:opacity-100">
                         <img
-                            src={project.clientLogo}
+                            src={getValidImage(project.clientLogo, project.slug, 5)}
                             alt={project.client}
                             className="h-8 w-auto max-w-[100px] object-contain"
                         />
