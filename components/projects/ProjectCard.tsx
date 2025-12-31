@@ -24,9 +24,8 @@ export default function ProjectCard({ project, locale, priority = false }: Proje
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            whileHover={{ y: -5 }}
             transition={{ duration: 0.3 }}
-            className="group flex flex-col h-full bg-card rounded-3xl overflow-hidden border border-border/50 hover:border-border transition-colors text-card-foreground"
+            className="group flex flex-col h-full !bg-foreground/10 dark:!bg-white/10 backdrop-blur-md rounded-3xl overflow-hidden border border-gray-light transition-colors text-foreground"
         >
             <Link href={`/${locale}/proyectos/${project.slug}`} className="flex flex-col h-full">
                 {/* Image Container */}
@@ -41,7 +40,7 @@ export default function ProjectCard({ project, locale, priority = false }: Proje
                     />
 
                     {/* Overlay with Client Logo */}
-                    <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm p-2 rounded-xl shadow-sm z-10 transition-opacity opacity-90 group-hover:opacity-100">
+                    <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm p-2 rounded-xl z-10 transition-opacity opacity-90 group-hover:opacity-100">
                         <img
                             src={getValidImage(project.clientLogo, project.slug, 5)}
                             alt={project.client}
@@ -69,7 +68,7 @@ export default function ProjectCard({ project, locale, priority = false }: Proje
                                 <span
                                     key={catId}
                                     className={cn(
-                                        "text-xs font-bold px-3 py-1 rounded-full backdrop-blur-md shadow-sm border",
+                                        "text-xs font-bold px-3 py-1 rounded-full backdrop-blur-md border",
                                         specificClass
                                     )}
                                 >

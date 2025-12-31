@@ -17,7 +17,7 @@ export default function Projects({ projects, locale }: { projects: Project[], lo
     const containerRef = useRef<HTMLDivElement>(null);
 
     return (
-        <section id="projects" className="py-20 bg-foreground text-background overflow-hidden">
+        <section id="projects" className="py-20 text-foreground overflow-hidden">
             <div className="container mx-auto px-4 mb-12">
                 <div className="flex flex-col md:flex-row justify-between items-end">
                     <div>
@@ -26,7 +26,7 @@ export default function Projects({ projects, locale }: { projects: Project[], lo
                     </div>
                     <Link
                         href={`/${locale}/proyectos`}
-                        className="text-sm font-bold border-b-2 border-background pb-1 mt-6 md:mt-0 hover:opacity-70 transition-opacity"
+                        className="text-sm font-bold border-b-2 border-foreground pb-1 mt-6 md:mt-0 hover:opacity-70 transition-opacity"
                     >
                         {t("cta")}
                     </Link>
@@ -41,11 +41,6 @@ export default function Projects({ projects, locale }: { projects: Project[], lo
                             <ProjectCard project={project} locale={locale} />
                         </div>
                     ))}
-
-                    {/* "See More" Card at the end */}
-                    <Link href={`/${locale}/proyectos`} className="w-[200px] flex items-center justify-center bg-gray-900 rounded-3xl border border-gray-800 hover:bg-gray-800 transition-colors group">
-                        <span className="text-xl font-bold group-hover:scale-110 transition-transform">Ver Todos</span>
-                    </Link>
                 </div>
             </div>
         </section>
