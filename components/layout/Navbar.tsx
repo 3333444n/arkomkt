@@ -184,7 +184,7 @@ export default function Navbar() {
                         alt="Arko MKT"
                         width={120}
                         height={40}
-                        className="h-15 w-auto dark:hidden"
+                        className="h-12 w-auto dark:hidden"
                         priority
                     />
                     <Image
@@ -192,7 +192,7 @@ export default function Navbar() {
                         alt="Arko MKT"
                         width={120}
                         height={40}
-                        className="h-15 w-auto hidden dark:block"
+                        className="h-12 w-auto hidden dark:block"
                         priority
                     />
                 </Link>
