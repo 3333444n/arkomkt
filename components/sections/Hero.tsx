@@ -37,9 +37,12 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                    <Link href="#services" className="bg-foreground text-background px-8 py-3 rounded-full font-medium hover:opacity-90 transition-opacity">
-                        {t("cta.primary")}
-                    </Link>
+                    <div className="relative group">
+                        <div className="absolute -inset-[3px] bg-gradient-to-r from-baby-blue via-baby-purple to-baby-pink blur-[10px] transition duration-200 group-hover:opacity-100 animate-gradient-xy bg-[length:200%_200%] rounded-full"></div>
+                        <Link href="#services" className="relative block bg-foreground text-background px-8 py-3 rounded-full font-medium hover:opacity-90 transition-opacity">
+                            {t("cta.primary")}
+                        </Link>
+                    </div>
                     <div className="text-center md:text-left">
                         <Link href="/contacto" className="text-foreground font-medium underline underline-offset-4 decoration-2">
                             {t("cta.secondary")}
