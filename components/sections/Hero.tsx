@@ -112,7 +112,15 @@ export default function Hero() {
                     transition={{ duration: 0.6 }}
                 >
                     {t.rich("title", {
-                        b: (chunks) => <b>{chunks}</b>,
+                        b: (chunks) => (
+                            <b className="relative inline-block">
+                                <span className="relative z-10">{chunks}</span>
+                                <span
+                                    className="absolute inset-0 bg-gradient-to-r from-baby-blue via-baby-purple to-baby-pink blur-[2000px] animate-gradient-xy bg-[length:200%_200%] opacity-75"
+                                    aria-hidden="true"
+                                />
+                            </b>
+                        ),
                         br: () => <br />,
                     })}
                 </motion.h1>
