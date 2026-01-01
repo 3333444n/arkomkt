@@ -59,7 +59,7 @@ export default function Hero() {
     }));
 
     return (
-        <section id="home" className="pt-32 pb-20 relative">
+        <section id="home" className="lg:pt-40 pt-20 pb-30 relative xs:px-24 sm:px-30 md:px-36 lg:px-48">
             {/* Particles container - breaks out of section to span full viewport */}
             <div
                 className="absolute top-0 bottom-0 pointer-events-none"
