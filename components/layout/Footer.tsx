@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/config";
+import Image from "next/image";
 
 export default function Footer() {
     const t = useTranslations("Footer");
@@ -69,9 +70,22 @@ export default function Footer() {
                 </div>
 
                 <div className="mt-16 pt-8 border-t border-gray-light flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-mid">
-                    <div className="font-bold text-foreground">
-                        Arko <span className="text-baby-blue">MKT</span>
-                    </div>
+                    <Link href="/" className="flex items-center">
+                        <Image
+                            src="/logos/iso-black.svg"
+                            alt="Arko MKT"
+                            width={120}
+                            height={40}
+                            className="h-8 w-auto dark:hidden"
+                        />
+                        <Image
+                            src="/logos/iso-white.svg"
+                            alt="Arko MKT"
+                            width={120}
+                            height={40}
+                            className="h-8 w-auto hidden dark:block"
+                        />
+                    </Link>
                     <p>{t("copyright")}</p>
                 </div>
             </div>
