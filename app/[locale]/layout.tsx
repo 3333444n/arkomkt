@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif } from "next/font/google";
+import { Golos_Text, Instrument_Serif } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { locales } from "@/i18n/config";
 import { notFound } from "next/navigation";
 import "../globals.css";
 
-const sansSerif = Inter({
+const sansSerif = Golos_Text({
   variable: "--font-sans-serif",
   subsets: ["latin"],
   display: "swap",
