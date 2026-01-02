@@ -59,7 +59,7 @@ export default function Hero() {
     }));
 
     return (
-        <section id="home" className="py-15 px-10 md:px-60 md:py-40 lg:py-50 xl:py-60">
+        <section id="home" className="py-15 px-10 md:px-60 md:py-40 lg:py-50 xl:py-60 w-full">
             {/* Particles container - breaks out of section to span full viewport */}
             <div
                 className="absolute top-0 bottom-0 pointer-events-none"
@@ -116,7 +116,7 @@ export default function Hero() {
                             <b className="relative inline-block">
                                 <span className="relative z-10">{chunks}</span>
                                 <span
-                                    className="absolute inset-0 bg-gradient-to-r from-baby-blue via-baby-purple to-baby-pink blur-[2000px] animate-gradient-xy bg-[length:200%_200%] opacity-75"
+                                    className="absolute -inset-8 scale-[1] bg-gradient-to-r from-baby-blue via-baby-purple to-baby-pink blur-2xl animate-gradient-xy bg-[length:200%_200%] opacity-60"
                                     aria-hidden="true"
                                 />
                             </b>
