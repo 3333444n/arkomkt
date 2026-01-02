@@ -59,7 +59,7 @@ export default function Hero() {
     }));
 
     return (
-        <section id="home" className="py-15 px-10 md:px-20 md:py-30 lg:py-50 xl:py-60 w-full">
+        <section id="home" className="py-10 px-10 md:px-20 md:py-20 lg:py-40 xl:py-50 w-full">
             {/* Particles container - breaks out of section to span full viewport */}
             <div
                 className="absolute top-0 bottom-0 pointer-events-none"
@@ -105,6 +105,18 @@ export default function Hero() {
                 ))}
             </div>
             <div className="container mx-auto px-4 text-center pt-16">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="mb-8"
+                >
+                    <motion.span
+                        className="inline-block px-4 py-1.5 rounded-full bg-opacity-10 bg-green-200 border-green-900 border text-green-900 text-xs font-semibold cursor-default shadow-sm"
+                    >
+                        {t("eyebrow")}
+                    </motion.span>
+                </motion.div>
                 <motion.h1
                     className="text-4xl md:text-6xl font-sans mb-5"
                     initial={{ opacity: 0, y: 20 }}
