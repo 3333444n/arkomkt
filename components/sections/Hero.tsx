@@ -116,7 +116,7 @@ export default function Hero() {
                             <b className="relative inline-block">
                                 <span className="relative z-10">{chunks}</span>
                                 <span
-                                    className="absolute -inset-8 scale-[1] bg-gradient-to-r from-baby-blue via-baby-purple to-baby-pink blur-2xl animate-gradient-xy bg-[length:200%_200%] opacity-60"
+                                    className="absolute -inset-12 rounded-full bg-gradient-to-r from-baby-blue via-baby-purple to-baby-pink blur-3xl animate-gradient-xy bg-[length:200%_200%] opacity-50"
                                     aria-hidden="true"
                                 />
                             </b>
@@ -140,9 +140,9 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                    <div className="relative group min-w-[300px]">
-                        <div className="absolute -inset-[3px] bg-gradient-to-r from-baby-blue via-baby-purple to-baby-pink blur-[10px] transition duration-200 group-hover:opacity-100 animate-gradient-xy bg-[length:200%_200%] rounded-full"></div>
-                        <Link href="#services" className="relative block text-sm md:text-base bg-foreground text-background px-6 py-3 rounded-full font-medium hover:opacity-90 transition-opacity">
+                    <div className="relative group min-w-[300px] rounded-full overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-r from-baby-blue via-baby-purple to-baby-pink blur-md transition duration-200 group-hover:opacity-100 animate-gradient-xy bg-[length:200%_200%] scale-110"></div>
+                        <Link href="#services" className="relative block text-sm md:text-base bg-foreground text-background px-6 py-3 rounded-full font-medium hover:opacity-90 transition-opacity m-[3px]">
                             {t("cta.primary")}
                         </Link>
                     </div>
