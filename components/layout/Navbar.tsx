@@ -9,21 +9,33 @@ import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 
 const sidebarVariants: Variants = {
-    open: (height = 1000) => ({
-        clipPath: `circle(${height * 2 + 200}px at calc(100% - 40px) 40px)`,
+    open: {
+        clipPath: "inset(0% 0% 0% 0%)",
         transition: {
-            type: "spring",
-            stiffness: 20,
-            restDelta: 2,
+            type: "tween",
+            ease: "easeInOut",
+            duration: 0.4,
         },
-    }),
+    },
     closed: {
-        clipPath: "circle(24px at calc(100% - 48px) 36px)",
+        clipPath: "inset(0% 0% 100% 0%)", // Wipes down from bottom when closing (or top-to-bottom reveal reversed?)
+        // actually inset(0% 0% 100% 0%) means the bottom edge is at 0%, top at 0%. So it's hidden at top.
+        // If we want it to close "backwards" (un-wipe), we usually just reverse.
+        // But let's check the closed state I wrote before: clipPath: "inset(0% 0% 100% 0%)"
+        // inset(top right bottom left). 
+        // inset(0% 0% 100% 0%): Top is 0. Bottom is 100% from the bottom edge?
+        // Wait. `inset(0% 0% 0% 0%)` is fully visible.
+        // `inset(100% 0% 0% 0%)` -> top edge is at 100% (invsible, pushed down).
+        // `inset(0% 0% 100% 0%)` -> bottom edge is at 100% (invisible, pushed up).
+        // If we want "top to bottom" opening:
+        // Closed: `inset(0% 0% 100% 0%)` (Only top edge exists? No, bottom inset 100% means the bottom edge is moved up to the top).
+        // So open: 0% 0% 0% 0% (Full).
+        // So it grows down. Correct.
         transition: {
-            delay: 0.3,
-            type: "spring",
-            stiffness: 300,
-            damping: 35,
+            delay: 0.1,
+            type: "tween",
+            ease: "easeInOut",
+            duration: 0.4,
         },
     },
 };
