@@ -59,7 +59,7 @@ export default function Hero() {
     }));
 
     return (
-        <section id="home" className="lg:pt-40 pt-20 pb-30 relative xs:px-24 sm:px-30 md:px-36 lg:px-48">
+        <section id="home" className="py-40 px-20">
             {/* Particles container - breaks out of section to span full viewport */}
             <div
                 className="absolute top-0 bottom-0 pointer-events-none"
@@ -104,9 +104,9 @@ export default function Hero() {
                     />
                 ))}
             </div>
-            <div className="container mx-auto px-4 text-center h-[50vh] pt-16">
+            <div className="container mx-auto px-4 text-center pt-16">
                 <motion.h1
-                    className="text-4xl md:text-6xl font-sans mb-6"
+                    className="text-4xl md:text-6xl font-sans mb-5"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}

@@ -14,11 +14,11 @@
   --gray-dark: #333333;
 
   /* Baby Palette */
-  --baby-pink: #eaa5cd;
-  --baby-blue: #91b6e8;
-  --baby-yellow: #f3e199;
-  --baby-orange: #e6a96c;
-  --baby-red: #ec7c7c;
+  --baby-pink: #e26eb2;
+  --baby-blue: #659de7;
+  --baby-yellow: #e9cf67;
+  --baby-orange: #f19d48;
+  --baby-red: #e65e5e;
   --baby-purple: #ccb0f3;
   --baby-green: #90c596;
 
@@ -92,9 +92,11 @@
     0% {
       background-position: 0% 50%;
     }
+
     50% {
       background-position: 100% 50%;
     }
+
     100% {
       background-position: 0% 50%;
     }
