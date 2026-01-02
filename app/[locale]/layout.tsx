@@ -23,8 +23,8 @@ export const metadata: Metadata = {
   title: "Arko MKT",
   description: "Digital Marketing & AI Agency",
   icons: {
-    icon: "/logos/icon-white.svg",
-    apple: "/logos/icon-white.svg",
+    icon: "/logos/icon-black.svg",
+    apple: "/logos/icon-black.svg",
   },
   openGraph: {
     images: [
