@@ -59,7 +59,7 @@ export default function Hero() {
     }));
 
     return (
-        <section id="home" className="py-40 px-12">
+        <section id="home" className="py-15 px-10 md:px-60 md:py-40 lg:py-50 xl:py-60">
             {/* Particles container - breaks out of section to span full viewport */}
             <div
                 className="absolute top-0 bottom-0 pointer-events-none"
@@ -140,9 +140,9 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                    <div className="relative group">
+                    <div className="relative group min-w-[300px]">
                         <div className="absolute -inset-[3px] bg-gradient-to-r from-baby-blue via-baby-purple to-baby-pink blur-[10px] transition duration-200 group-hover:opacity-100 animate-gradient-xy bg-[length:200%_200%] rounded-full"></div>
-                        <Link href="#services" className="relative block bg-foreground text-background px-8 py-3 rounded-full font-medium hover:opacity-90 transition-opacity">
+                        <Link href="#services" className="relative block text-sm md:text-base bg-foreground text-background px-6 py-3 rounded-full font-medium hover:opacity-90 transition-opacity">
                             {t("cta.primary")}
                         </Link>
                     </div>
