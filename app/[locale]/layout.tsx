@@ -20,6 +20,7 @@ const serif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://arkomkt.com"),
   title: "Arko MKT",
   description: "Digital Marketing & AI Agency",
   icons: {
