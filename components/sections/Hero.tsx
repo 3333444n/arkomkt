@@ -59,7 +59,7 @@ export default function Hero() {
     }));
 
     return (
-        <section id="home" className="py-15 px-10 md:px-60 md:py-40 lg:py-50 xl:py-60 w-full">
+        <section id="home" className="py-15 px-10 md:px-20 md:py-30 lg:py-50 xl:py-60 w-full">
             {/* Particles container - breaks out of section to span full viewport */}
             <div
                 className="absolute top-0 bottom-0 pointer-events-none"
