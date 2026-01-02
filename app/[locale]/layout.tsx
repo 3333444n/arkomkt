@@ -47,6 +47,7 @@ export async function generateStaticParams() {
 }
 
 import { Providers } from "@/components/layout/Providers";
+import GradientPreloader from "@/components/util/GradientPreloader";
 
 export default async function LocaleLayout({
   children,
@@ -78,6 +79,7 @@ export default async function LocaleLayout({
         className="antialiased"
       >
         <Providers locale={locale} messages={messages}>
+          <GradientPreloader />
           {children}
         </Providers>
       </body>

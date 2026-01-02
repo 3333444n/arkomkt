@@ -118,4 +118,19 @@ Minimal client state needed:
 3. Next.js builds static pages
 4. MDX content compiled
 5. Deploy to Vercel edge network
+5. Deploy to Vercel edge network
 6. Preview deployments for non-main branches
+
+## Performance Optimization
+
+### Image Preloading
+To ensure smooth component transitions (specifically for Services cards and Contact page background), we implement a **Client-Side Gradient Preloader**.
+
+- **Strategy**: Deferred loading of large background images
+- **Implementation**: `components/util/GradientPreloader.tsx`
+- **Behavior**:
+  - Checks for data saver mode or slow connections (2g)
+  - Waits 2 seconds after hydration to avoid blocking LCP
+  - Prefetches all gradient images defined in `public/images/gradients`
+  - Uses standard browser cache so subsequent requests are instant
+- **Benefit**: Removes "pop-in" effect when users interact with the Service cards or navigate to Contact page.
