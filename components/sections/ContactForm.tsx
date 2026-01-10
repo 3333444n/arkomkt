@@ -293,7 +293,7 @@ export default function ContactForm() {
                                     type="text"
                                     id="name"
                                     name="name"
-                                    maxLength={100}
+                                    maxLength={64}
                                     className={`w-full p-3 rounded-lg border bg-static-white focus:ring-2 focus:ring-blue-500 outline-none text-static-black placeholder:text-gray-mid ${fieldErrors.name ? 'border-red-500' : 'border-gray-mid/30'}`}
                                     placeholder={t("form.name")}
                                 />
@@ -473,7 +473,7 @@ export default function ContactForm() {
                                 id="message"
                                 name="message"
                                 rows={4}
-                                maxLength={2000}
+                                maxLength={256}
                                 className="w-full p-3 rounded-lg border border-gray-mid/30 bg-static-white focus:ring-2 focus:ring-blue-500 outline-none text-static-black placeholder:text-gray-mid"
                                 placeholder={t("form.messagePlaceholder")}
                             ></textarea>
