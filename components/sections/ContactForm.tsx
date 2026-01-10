@@ -55,8 +55,58 @@ export default function ContactForm() {
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState("");
 
+    // Field validation errors
+    const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+
     // Honeypot field for bot detection
     const [honeypot, setHoneypot] = useState("");
+
+    // Email validation regex
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+    // Validate form before submission
+    const validateForm = (formData: FormData): boolean => {
+        const errors: Record<string, string> = {};
+
+        const name = formData.get("name") as string;
+        const email = formData.get("email") as string;
+        const phone = formData.get("phone") as string;
+        const budget = formData.get("budget") as string;
+        const preferredMethod = formData.get("preferredMethod") as string;
+
+        if (!name || name.trim() === "") {
+            errors.name = t("form.required");
+        }
+
+        if (!email || email.trim() === "") {
+            errors.email = t("form.required");
+        } else if (!emailRegex.test(email)) {
+            errors.email = t("form.invalidEmail");
+        }
+
+        if (!selectedCountryCode) {
+            errors.country = t("form.required");
+        }
+
+        if (!phone || phone.trim() === "") {
+            errors.phone = t("form.required");
+        }
+
+        if (selectedServices.length === 0) {
+            errors.services = t("form.selectService");
+        }
+
+        if (!budget) {
+            errors.budget = t("form.selectBudget");
+        }
+
+        if (!preferredMethod) {
+            errors.preferredMethod = t("form.selectMethod");
+        }
+
+        setFieldErrors(errors);
+        return Object.keys(errors).length === 0;
+    };
 
     // Set default dial code based on country selection
     const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -71,11 +121,18 @@ export default function ContactForm() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setIsSubmitting(true);
         setError("");
+        setFieldErrors({});
 
         const form = e.currentTarget;
         const formDataObj = new FormData(form);
+
+        // Validate form
+        if (!validateForm(formDataObj)) {
+            return;
+        }
+
+        setIsSubmitting(true);
 
         // Get country name from code
         const country = (countriesData as Country[]).find(c => c.code === selectedCountryCode);
@@ -229,42 +286,53 @@ export default function ContactForm() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* Name */}
                             <div>
-                                <label htmlFor="name" className="block text-sm font-medium mb-2 text-static-black">{t("form.name")}</label>
+                                <label htmlFor="name" className="block text-sm font-medium mb-2 text-static-black">
+                                    {t("form.name")} <span className="text-red-500">*</span>
+                                </label>
                                 <input
                                     type="text"
                                     id="name"
                                     name="name"
-                                    className="w-full p-3 rounded-lg border border-gray-mid/30 bg-static-white focus:ring-2 focus:ring-blue-500 outline-none text-static-black placeholder:text-gray-mid"
+                                    maxLength={100}
+                                    className={`w-full p-3 rounded-lg border bg-static-white focus:ring-2 focus:ring-blue-500 outline-none text-static-black placeholder:text-gray-mid ${fieldErrors.name ? 'border-red-500' : 'border-gray-mid/30'}`}
                                     placeholder={t("form.name")}
-                                    required
                                 />
+                                {fieldErrors.name && (
+                                    <p className="text-red-500 text-sm mt-1">{fieldErrors.name}</p>
+                                )}
                             </div>
 
                             {/* Email */}
                             <div>
-                                <label htmlFor="email" className="block text-sm font-medium mb-2 text-static-black">{t("form.email")}</label>
+                                <label htmlFor="email" className="block text-sm font-medium mb-2 text-static-black">
+                                    {t("form.email")} <span className="text-red-500">*</span>
+                                </label>
                                 <input
                                     type="email"
                                     id="email"
                                     name="email"
-                                    className="w-full p-3 rounded-lg border border-gray-mid/30 bg-static-white focus:ring-2 focus:ring-blue-500 outline-none text-static-black placeholder:text-gray-mid"
+                                    maxLength={254}
+                                    className={`w-full p-3 rounded-lg border bg-static-white focus:ring-2 focus:ring-blue-500 outline-none text-static-black placeholder:text-gray-mid ${fieldErrors.email ? 'border-red-500' : 'border-gray-mid/30'}`}
                                     placeholder={t("form.email")}
-                                    required
                                 />
+                                {fieldErrors.email && (
+                                    <p className="text-red-500 text-sm mt-1">{fieldErrors.email}</p>
+                                )}
                             </div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* Country */}
                             <div>
-                                <label htmlFor="country" className="block text-sm font-medium mb-2 text-static-black">{t("form.country")}</label>
+                                <label htmlFor="country" className="block text-sm font-medium mb-2 text-static-black">
+                                    {t("form.country")} <span className="text-red-500">*</span>
+                                </label>
                                 <select
                                     id="country"
                                     name="country"
-                                    className="w-full p-3 rounded-lg border border-gray-mid/30 bg-static-white focus:ring-2 focus:ring-blue-500 outline-none text-static-black"
+                                    className={`w-full p-3 rounded-lg border bg-static-white focus:ring-2 focus:ring-blue-500 outline-none text-static-black ${fieldErrors.country ? 'border-red-500' : 'border-gray-mid/30'}`}
                                     value={selectedCountryCode}
                                     onChange={handleCountryChange}
-                                    required
                                 >
                                     <option value="" disabled>{t("form.country")}</option>
                                     {(countriesData as Country[]).map((country) => (
@@ -273,11 +341,16 @@ export default function ContactForm() {
                                         </option>
                                     ))}
                                 </select>
+                                {fieldErrors.country && (
+                                    <p className="text-red-500 text-sm mt-1">{fieldErrors.country}</p>
+                                )}
                             </div>
 
                             {/* Phone */}
                             <div>
-                                <label htmlFor="phone" className="block text-sm font-medium mb-2 text-static-black">{t("form.phone")}</label>
+                                <label htmlFor="phone" className="block text-sm font-medium mb-2 text-static-black">
+                                    {t("form.phone")} <span className="text-red-500">*</span>
+                                </label>
                                 <div className="flex">
                                     <select
                                         className="p-3 border border-gray-mid/30 rounded-l-lg bg-gray-light/50 text-static-black border-r-0 focus:ring-2 focus:ring-blue-500 outline-none max-w-[120px]"
@@ -295,17 +368,22 @@ export default function ContactForm() {
                                         type="tel"
                                         id="phone"
                                         name="phone"
-                                        className="w-full p-3 rounded-r-lg border border-gray-mid/30 bg-static-white focus:ring-2 focus:ring-blue-500 outline-none text-static-black placeholder:text-gray-mid"
+                                        maxLength={15}
+                                        className={`w-full p-3 rounded-r-lg border bg-static-white focus:ring-2 focus:ring-blue-500 outline-none text-static-black placeholder:text-gray-mid ${fieldErrors.phone ? 'border-red-500' : 'border-gray-mid/30'}`}
                                         placeholder={t("form.phone")}
-                                        required
                                     />
                                 </div>
+                                {fieldErrors.phone && (
+                                    <p className="text-red-500 text-sm mt-1">{fieldErrors.phone}</p>
+                                )}
                             </div>
                         </div>
 
                         {/* Service / Project Type - Multi-select Tag Selector */}
                         <div>
-                            <label className="block text-sm font-medium mb-3 text-static-black">{t("form.service")}</label>
+                            <label className="block text-sm font-medium mb-3 text-static-black">
+                                {t("form.service")} <span className="text-red-500">*</span>
+                            </label>
 
                             {/* Selected tags display */}
                             {selectedServices.length > 0 && (
@@ -362,24 +440,30 @@ export default function ContactForm() {
                                 type="hidden"
                                 name="services"
                                 value={selectedServices.join(',')}
-                                required={selectedServices.length === 0}
                             />
-                            {selectedServices.length === 0 && (
+                            {fieldErrors.services ? (
+                                <p className="text-red-500 text-sm mt-2">{fieldErrors.services}</p>
+                            ) : selectedServices.length === 0 && (
                                 <p className="text-sm text-gray-mid mt-2">{t("form.servicePlaceholder")}</p>
                             )}
                         </div>
 
                         {/* Budget Range */}
                         <div>
-                            <label className="block text-sm font-medium mb-4 text-static-black">{t("form.budget")}</label>
+                            <label className="block text-sm font-medium mb-4 text-static-black">
+                                {t("form.budget")} <span className="text-red-500">*</span>
+                            </label>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {['range1', 'range2', 'range3', 'range4'].map((range) => (
-                                    <label key={range} className="flex items-center p-4 border border-gray-mid/30 rounded-lg cursor-pointer hover:bg-gray-light/50 transition-colors text-static-black">
-                                        <input type="radio" name="budget" value={range} className="mr-3" required />
+                                    <label key={range} className={`flex items-center p-4 border rounded-lg cursor-pointer hover:bg-gray-light/50 transition-colors text-static-black ${fieldErrors.budget ? 'border-red-500' : 'border-gray-mid/30'}`}>
+                                        <input type="radio" name="budget" value={range} className="mr-3" />
                                         <span>{t(`form.budgetOptions.${range}`)}</span>
                                     </label>
                                 ))}
                             </div>
+                            {fieldErrors.budget && (
+                                <p className="text-red-500 text-sm mt-2">{fieldErrors.budget}</p>
+                            )}
                         </div>
 
                         {/* Message */}
@@ -389,25 +473,30 @@ export default function ContactForm() {
                                 id="message"
                                 name="message"
                                 rows={4}
+                                maxLength={2000}
                                 className="w-full p-3 rounded-lg border border-gray-mid/30 bg-static-white focus:ring-2 focus:ring-blue-500 outline-none text-static-black placeholder:text-gray-mid"
                                 placeholder={t("form.messagePlaceholder")}
-                                required
                             ></textarea>
                         </div>
 
                         {/* Preferred Response Method */}
                         <div>
-                            <label className="block text-sm font-medium mb-4 text-static-black">{t("form.preferredMethod")}</label>
+                            <label className="block text-sm font-medium mb-4 text-static-black">
+                                {t("form.preferredMethod")} <span className="text-red-500">*</span>
+                            </label>
                             <div className="flex space-x-6">
                                 <label className="flex items-center cursor-pointer text-static-black">
-                                    <input type="radio" name="preferredMethod" value="Email" className="mr-2" required />
+                                    <input type="radio" name="preferredMethod" value="Email" className="mr-2" />
                                     <span>{t("form.emailMethod")}</span>
                                 </label>
                                 <label className="flex items-center cursor-pointer text-static-black">
-                                    <input type="radio" name="preferredMethod" value="WhatsApp" className="mr-2" required />
+                                    <input type="radio" name="preferredMethod" value="WhatsApp" className="mr-2" />
                                     <span>{t("form.whatsappMethod")}</span>
                                 </label>
                             </div>
+                            {fieldErrors.preferredMethod && (
+                                <p className="text-red-500 text-sm mt-2">{fieldErrors.preferredMethod}</p>
+                            )}
                         </div>
 
                         {/* Submit */}

@@ -105,7 +105,12 @@
             "submitting": "Submitting...",
             "error": "Failed to send. Please try again.",
             "successTitle": "Thank you for contacting us!",
-            "successMessage": "We'll get back to you soon."
+            "successMessage": "We'll get back to you soon.",
+            "required": "This field is required",
+            "invalidEmail": "Please enter a valid email",
+            "selectService": "Please select at least one service",
+            "selectBudget": "Please select a budget range",
+            "selectMethod": "Please select a contact method"
         }
     }
 }
