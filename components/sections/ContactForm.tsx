@@ -369,6 +369,12 @@ export default function ContactForm() {
                                         id="phone"
                                         name="phone"
                                         maxLength={15}
+                                        pattern="[0-9]*"
+                                        inputMode="numeric"
+                                        onInput={(e) => {
+                                            const target = e.target as HTMLInputElement;
+                                            target.value = target.value.replace(/[^0-9]/g, '');
+                                        }}
                                         className={`w-full p-3 rounded-r-lg border bg-static-white focus:ring-2 focus:ring-blue-500 outline-none text-static-black placeholder:text-gray-mid ${fieldErrors.phone ? 'border-red-500' : 'border-gray-mid/30'}`}
                                         placeholder={t("form.phone")}
                                     />
