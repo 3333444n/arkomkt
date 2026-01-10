@@ -115,19 +115,19 @@ Minimal client state needed:
 
 ## Contact Form Integration
 
-The contact form (`components/sections/ContactForm.tsx`) submits leads to Airtable via a Cloudflare Worker.
+The contact form (`components/sections/ContactForm.tsx`) submits leads to Notion via a Cloudflare Worker.
 
 ### Architecture
 ```
-ContactForm.tsx → POST → Cloudflare Worker → Airtable API → leads table
+ContactForm.tsx → POST → Cloudflare Worker → Notion API → leads-from-website database
 ```
 
 ### Cloudflare Worker
 - **URL**: `https://lead-form-handler.the4rko.workers.dev/`
 - **Dashboard**: Cloudflare Dashboard → Workers & Pages → lead-form-handler
 - **Environment Variables** (Settings → Variables):
-  - `AIRTABLE_BASE_ID`: The Airtable base ID (starts with `app...`)
-  - `AIRTABLE_API_KEY`: Airtable Personal Access Token (starts with `pat...`)
+  - `NOTION_TOKEN`: Notion integration token (starts with `ntn_...`)
+  - `NOTION_DATABASE_ID`: Notion database ID (`2e4b320599cb80c29be7c5fe84bb4d8e`)
   - `FORM_TOKEN`: Shared secret for CSRF protection (generate: `openssl rand -hex 32`)
   - `ENVIRONMENT`: `production` or `development`
 - **KV Binding** (Bindings tab):
@@ -151,24 +151,33 @@ NEXT_PUBLIC_FORM_TOKEN=<same-token-as-worker>
 | **CSRF Protection** | `X-Form-Token` header with shared secret |
 | **Input Sanitization** | Strips HTML tags, script injections, trims whitespace |
 
-### Airtable Structure
-- **Workspace**: Arkustomers
-- **Table**: `leads`
-- **Columns** (all text type):
-  - `name`, `email`, `country`, `phone-number`, `service-of-interest`, `budget`, `notes`, `contact-method`, `language`
+### Notion Database Structure
+- **Database**: Leads from website
+- **Columns**:
+  | Column | Notion Type | Notes |
+  |--------|-------------|-------|
+  | `name` | Title | Primary column |
+  | `email` | Email | |
+  | `phone-number` | Text | |
+  | `country` | Select | Auto-creates options |
+  | `service-of-interest` | Multi-select | Auto-creates options |
+  | `budget` | Select | Auto-creates options |
+  | `contact-method` | Select | Email or WhatsApp |
+  | `language` | Select | es, en, or fr |
+  | `notes` | Text | |
 
 ### Form Fields Mapping
-| Form Field | Worker Payload Key | Airtable Column |
-|------------|-------------------|-----------------|
-| Name | `name` | `name` |
+| Form Field | Worker Payload Key | Notion Column |
+|------------|-------------------|---------------|
+| Name | `name` | `name` (title) |
 | Email | `email` | `email` |
-| Country | `country` | `country` |
+| Country | `country` | `country` (select) |
 | Phone | `phoneNumber` | `phone-number` |
-| Service | `serviceOfInterest` | `service-of-interest` |
-| Budget | `budget` | `budget` |
+| Services | `servicesOfInterest` | `service-of-interest` (multi-select) |
+| Budget | `budget` | `budget` (select) |
 | Message | `notes` | `notes` |
-| Preferred Method | `contactMethod` | `contact-method` |
-| Locale | `language` | `language` |
+| Preferred Method | `contactMethod` | `contact-method` (select) |
+| Locale | `language` | `language` (select) |
 | Honeypot | `website` | (not stored - used for bot detection) |
 
 ## Build Pipeline

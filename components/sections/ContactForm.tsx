@@ -24,6 +24,32 @@ export default function ContactForm() {
     const [selectedCountryCode, setSelectedCountryCode] = useState("");
     const [selectedDialCode, setSelectedDialCode] = useState("");
 
+    // State for multi-select services
+    const [selectedServices, setSelectedServices] = useState<string[]>([]);
+
+    // Toggle service selection
+    const toggleService = (categoryId: string) => {
+        setSelectedServices(prev =>
+            prev.includes(categoryId)
+                ? prev.filter(id => id !== categoryId)
+                : [...prev, categoryId]
+        );
+    };
+
+    // Get color class for category
+    const getCategoryColor = (color: string) => {
+        const colorMap: Record<string, string> = {
+            'baby-blue': 'bg-baby-blue',
+            'baby-green': 'bg-baby-green',
+            'baby-pink': 'bg-baby-pink',
+            'baby-orange': 'bg-baby-orange',
+            'baby-purple': 'bg-baby-purple',
+            'baby-yellow': 'bg-baby-yellow',
+            'baby-red': 'bg-baby-red',
+        };
+        return colorMap[color] || 'bg-gray-light';
+    };
+
     // State for form submission
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
@@ -59,10 +85,11 @@ export default function ContactForm() {
         const phoneInput = formDataObj.get("phone") as string;
         const fullPhone = selectedDialCode ? `${selectedDialCode} ${phoneInput}` : phoneInput;
 
-        // Get service name from id
-        const serviceId = formDataObj.get("service") as string;
-        const service = categories.find(c => c.id === serviceId);
-        const serviceName = service ? (service.name[locale as keyof typeof service.name] || service.name['es']) : serviceId;
+        // Get service names from selected IDs (multi-select)
+        const serviceNames = selectedServices.map(serviceId => {
+            const service = categories.find(c => c.id === serviceId);
+            return service ? (service.name[locale as keyof typeof service.name] || service.name['es']) : serviceId;
+        });
 
         // Get budget value (radio button) and map to display text
         const budgetValue = formDataObj.get("budget") as string;
@@ -81,7 +108,7 @@ export default function ContactForm() {
             email: formDataObj.get("email") as string,
             country: countryName,
             phoneNumber: fullPhone,
-            serviceOfInterest: serviceName,
+            servicesOfInterest: serviceNames, // Now an array for multi-select
             budget: budgetMap[budgetValue] || budgetValue,
             notes: formDataObj.get("message") as string,
             contactMethod: preferredMethod,
@@ -106,6 +133,7 @@ export default function ContactForm() {
                 form.reset();
                 setSelectedCountryCode("");
                 setSelectedDialCode("");
+                setSelectedServices([]);
             } else {
                 const errorText = await response.text();
                 console.error("Form submission failed:", response.status, errorText);
@@ -275,23 +303,70 @@ export default function ContactForm() {
                             </div>
                         </div>
 
-                        {/* Service / Project Type */}
+                        {/* Service / Project Type - Multi-select Tag Selector */}
                         <div>
-                            <label htmlFor="service" className="block text-sm font-medium mb-2 text-static-black">{t("form.service")}</label>
-                            <select
-                                id="service"
-                                name="service"
-                                className="w-full p-3 rounded-lg border border-gray-mid/30 bg-static-white focus:ring-2 focus:ring-blue-500 outline-none text-static-black"
-                                required
-                            >
-                                <option value="">{t("form.servicePlaceholder")}</option>
-                                {categories.map((category) => (
-                                    <option key={category.id} value={category.id}>
-                                        {/* @ts-ignore - dynamic key based on locale */}
-                                        {category.name[locale] || category.name['es']}
-                                    </option>
-                                ))}
-                            </select>
+                            <label className="block text-sm font-medium mb-3 text-static-black">{t("form.service")}</label>
+
+                            {/* Selected tags display */}
+                            {selectedServices.length > 0 && (
+                                <div className="flex flex-wrap gap-2 p-3 mb-3 border border-gray-mid/30 rounded-lg bg-static-white min-h-[48px]">
+                                    {selectedServices.map(serviceId => {
+                                        const category = categories.find(c => c.id === serviceId);
+                                        if (!category) return null;
+                                        return (
+                                            <span
+                                                key={serviceId}
+                                                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-static-black ${getCategoryColor(category.color)}`}
+                                            >
+                                                {/* @ts-ignore - dynamic key based on locale */}
+                                                {category.name[locale] || category.name['es']}
+                                                <button
+                                                    type="button"
+                                                    onClick={() => toggleService(serviceId)}
+                                                    className="hover:bg-static-black/10 rounded-full p-0.5 transition-colors"
+                                                    aria-label={`Remove ${category.name[locale as keyof typeof category.name] || category.name['es']}`}
+                                                >
+                                                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                                    </svg>
+                                                </button>
+                                            </span>
+                                        );
+                                    })}
+                                </div>
+                            )}
+
+                            {/* Available tags grid */}
+                            <div className="flex flex-wrap gap-2">
+                                {categories.map((category) => {
+                                    const isSelected = selectedServices.includes(category.id);
+                                    return (
+                                        <button
+                                            key={category.id}
+                                            type="button"
+                                            onClick={() => toggleService(category.id)}
+                                            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border-2 ${isSelected
+                                                    ? `${getCategoryColor(category.color)} border-static-black/20 text-static-black shadow-sm`
+                                                    : 'bg-static-white border-gray-mid/30 text-static-black/70 hover:border-gray-mid/50 hover:bg-gray-light/30'
+                                                }`}
+                                        >
+                                            {/* @ts-ignore - dynamic key based on locale */}
+                                            {category.name[locale] || category.name['es']}
+                                        </button>
+                                    );
+                                })}
+                            </div>
+
+                            {/* Hidden input for form validation - requires at least one selection */}
+                            <input
+                                type="hidden"
+                                name="services"
+                                value={selectedServices.join(',')}
+                                required={selectedServices.length === 0}
+                            />
+                            {selectedServices.length === 0 && (
+                                <p className="text-sm text-gray-mid mt-2">{t("form.servicePlaceholder")}</p>
+                            )}
                         </div>
 
                         {/* Budget Range */}
