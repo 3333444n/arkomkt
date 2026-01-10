@@ -101,7 +101,11 @@
             "preferredMethod": "Preferred Response Method",
             "emailMethod": "Email",
             "whatsappMethod": "WhatsApp",
-            "submit": "Submit"
+            "submit": "Submit",
+            "submitting": "Submitting...",
+            "error": "Failed to send. Please try again.",
+            "successTitle": "Thank you for contacting us!",
+            "successMessage": "We'll get back to you soon."
         }
     }
 }

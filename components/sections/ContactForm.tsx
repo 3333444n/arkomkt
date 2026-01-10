@@ -2,7 +2,7 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import servicesData from "@/data/services.json";
 import countriesData from "@/data/countries.json";
 
@@ -24,6 +24,14 @@ export default function ContactForm() {
     const [selectedCountryCode, setSelectedCountryCode] = useState("");
     const [selectedDialCode, setSelectedDialCode] = useState("");
 
+    // State for form submission
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState("");
+
+    // Honeypot field for bot detection
+    const [honeypot, setHoneypot] = useState("");
+
     // Set default dial code based on country selection
     const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const countryCode = e.target.value;
@@ -34,6 +42,107 @@ export default function ContactForm() {
             setSelectedDialCode(country.dial_code);
         }
     };
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setError("");
+
+        const form = e.currentTarget;
+        const formDataObj = new FormData(form);
+
+        // Get country name from code
+        const country = (countriesData as Country[]).find(c => c.code === selectedCountryCode);
+        const countryName = country ? `${country.flag} ${country.name}` : selectedCountryCode;
+
+        // Get phone with dial code
+        const phoneInput = formDataObj.get("phone") as string;
+        const fullPhone = selectedDialCode ? `${selectedDialCode} ${phoneInput}` : phoneInput;
+
+        // Get service name from id
+        const serviceId = formDataObj.get("service") as string;
+        const service = categories.find(c => c.id === serviceId);
+        const serviceName = service ? (service.name[locale as keyof typeof service.name] || service.name['es']) : serviceId;
+
+        // Get budget value (radio button) and map to display text
+        const budgetValue = formDataObj.get("budget") as string;
+        const budgetMap: Record<string, string> = {
+            range1: "$6,000 - $12,000 MXN",
+            range2: "$12,000 - $25,000 MXN",
+            range3: "$25,000 - $50,000 MXN",
+            range4: "Más de $50,000 MXN"
+        };
+
+        // Get preferred contact method (radio button)
+        const preferredMethod = formDataObj.get("preferredMethod") as string;
+
+        const payload = {
+            name: formDataObj.get("name") as string,
+            email: formDataObj.get("email") as string,
+            country: countryName,
+            phoneNumber: fullPhone,
+            serviceOfInterest: serviceName,
+            budget: budgetMap[budgetValue] || budgetValue,
+            notes: formDataObj.get("message") as string,
+            contactMethod: preferredMethod,
+            language: locale, // Include language for Airtable
+            website: honeypot, // Honeypot field - should be empty for real users
+        };
+
+        console.log("Submitting form data:", payload); // Debug log
+
+        try {
+            const response = await fetch("https://lead-form-handler.the4rko.workers.dev/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-Form-Token": process.env.NEXT_PUBLIC_FORM_TOKEN || "",
+                },
+                body: JSON.stringify(payload),
+            });
+
+            if (response.ok) {
+                setSubmitted(true);
+                form.reset();
+                setSelectedCountryCode("");
+                setSelectedDialCode("");
+            } else {
+                const errorText = await response.text();
+                console.error("Form submission failed:", response.status, errorText);
+                setError(t("form.error"));
+            }
+        } catch (err) {
+            console.error("Form submission error:", err);
+            setError(t("form.error"));
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    // Success message
+    if (submitted) {
+        return (
+            <section
+                className="min-h-screen py-24 px-4 bg-cover bg-center bg-fixed"
+                style={{ backgroundImage: "url('/images/gradients/gradient4.webp')" }}
+            >
+                <div className="max-w-3xl mx-auto">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="bg-static-white/80 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-2xl text-center"
+                    >
+                        <h2 className="text-3xl font-serif mb-4 text-static-black">
+                            {t("form.successTitle") || "¡Gracias por contactarnos!"}
+                        </h2>
+                        <p className="text-static-black/80">
+                            {t("form.successMessage") || "Nos pondremos en contacto contigo pronto."}
+                        </p>
+                    </motion.div>
+                </div>
+            </section>
+        );
+    }
 
     return (
         <section
@@ -51,7 +160,6 @@ export default function ContactForm() {
                     <p className="text-static-white/80">{t("subtitle")}</p>
                 </motion.div>
 
-                {/* Glassmorphism Form Container */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -59,7 +167,37 @@ export default function ContactForm() {
                     transition={{ delay: 0.2 }}
                     className="bg-static-white/80 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-2xl"
                 >
-                    <form className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        {error && (
+                            <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+                                {error}
+                            </div>
+                        )}
+
+                        {/* Honeypot field - hidden from real users, bots will fill it */}
+                        <div
+                            aria-hidden="true"
+                            style={{
+                                position: 'absolute',
+                                left: '-9999px',
+                                opacity: 0,
+                                height: 0,
+                                overflow: 'hidden',
+                                pointerEvents: 'none'
+                            }}
+                        >
+                            <label htmlFor="website">Website</label>
+                            <input
+                                type="text"
+                                id="website"
+                                name="website"
+                                tabIndex={-1}
+                                autoComplete="off"
+                                value={honeypot}
+                                onChange={(e) => setHoneypot(e.target.value)}
+                            />
+                        </div>
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* Name */}
                             <div>
@@ -67,6 +205,7 @@ export default function ContactForm() {
                                 <input
                                     type="text"
                                     id="name"
+                                    name="name"
                                     className="w-full p-3 rounded-lg border border-gray-mid/30 bg-static-white focus:ring-2 focus:ring-blue-500 outline-none text-static-black placeholder:text-gray-mid"
                                     placeholder={t("form.name")}
                                     required
@@ -79,6 +218,7 @@ export default function ContactForm() {
                                 <input
                                     type="email"
                                     id="email"
+                                    name="email"
                                     className="w-full p-3 rounded-lg border border-gray-mid/30 bg-static-white focus:ring-2 focus:ring-blue-500 outline-none text-static-black placeholder:text-gray-mid"
                                     placeholder={t("form.email")}
                                     required
@@ -92,6 +232,7 @@ export default function ContactForm() {
                                 <label htmlFor="country" className="block text-sm font-medium mb-2 text-static-black">{t("form.country")}</label>
                                 <select
                                     id="country"
+                                    name="country"
                                     className="w-full p-3 rounded-lg border border-gray-mid/30 bg-static-white focus:ring-2 focus:ring-blue-500 outline-none text-static-black"
                                     value={selectedCountryCode}
                                     onChange={handleCountryChange}
@@ -125,6 +266,7 @@ export default function ContactForm() {
                                     <input
                                         type="tel"
                                         id="phone"
+                                        name="phone"
                                         className="w-full p-3 rounded-r-lg border border-gray-mid/30 bg-static-white focus:ring-2 focus:ring-blue-500 outline-none text-static-black placeholder:text-gray-mid"
                                         placeholder={t("form.phone")}
                                         required
@@ -138,6 +280,7 @@ export default function ContactForm() {
                             <label htmlFor="service" className="block text-sm font-medium mb-2 text-static-black">{t("form.service")}</label>
                             <select
                                 id="service"
+                                name="service"
                                 className="w-full p-3 rounded-lg border border-gray-mid/30 bg-static-white focus:ring-2 focus:ring-blue-500 outline-none text-static-black"
                                 required
                             >
@@ -169,6 +312,7 @@ export default function ContactForm() {
                             <label htmlFor="message" className="block text-sm font-medium mb-2 text-static-black">{t("form.message")}</label>
                             <textarea
                                 id="message"
+                                name="message"
                                 rows={4}
                                 className="w-full p-3 rounded-lg border border-gray-mid/30 bg-static-white focus:ring-2 focus:ring-blue-500 outline-none text-static-black placeholder:text-gray-mid"
                                 placeholder={t("form.messagePlaceholder")}
@@ -181,11 +325,11 @@ export default function ContactForm() {
                             <label className="block text-sm font-medium mb-4 text-static-black">{t("form.preferredMethod")}</label>
                             <div className="flex space-x-6">
                                 <label className="flex items-center cursor-pointer text-static-black">
-                                    <input type="radio" name="preferredMethod" value="email" className="mr-2" required />
+                                    <input type="radio" name="preferredMethod" value="Email" className="mr-2" required />
                                     <span>{t("form.emailMethod")}</span>
                                 </label>
                                 <label className="flex items-center cursor-pointer text-static-black">
-                                    <input type="radio" name="preferredMethod" value="whatsapp" className="mr-2" required />
+                                    <input type="radio" name="preferredMethod" value="WhatsApp" className="mr-2" required />
                                     <span>{t("form.whatsappMethod")}</span>
                                 </label>
                             </div>
@@ -194,9 +338,10 @@ export default function ContactForm() {
                         {/* Submit */}
                         <button
                             type="submit"
-                            className="w-full md:w-auto px-8 py-3 bg-static-black text-static-white rounded-full font-bold hover:opacity-90 transition-opacity"
+                            disabled={isSubmitting}
+                            className="w-full md:w-auto px-8 py-3 bg-static-black text-static-white rounded-full font-bold hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            {t("form.submit")}
+                            {isSubmitting ? (t("form.submitting") || "Enviando...") : t("form.submit")}
                         </button>
                     </form>
                 </motion.div>

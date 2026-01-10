@@ -110,6 +110,66 @@ Minimal client state needed:
 | Framer Motion | Animations | To install |
 | next-intl | i18n | To install |
 | MDX | Rich content | To configure |
+| Cloudflare Workers | Contact form API | Active |
+| Airtable | Lead storage | Active |
+
+## Contact Form Integration
+
+The contact form (`components/sections/ContactForm.tsx`) submits leads to Airtable via a Cloudflare Worker.
+
+### Architecture
+```
+ContactForm.tsx → POST → Cloudflare Worker → Airtable API → leads table
+```
+
+### Cloudflare Worker
+- **URL**: `https://lead-form-handler.the4rko.workers.dev/`
+- **Dashboard**: Cloudflare Dashboard → Workers & Pages → lead-form-handler
+- **Environment Variables** (Settings → Variables):
+  - `AIRTABLE_BASE_ID`: The Airtable base ID (starts with `app...`)
+  - `AIRTABLE_API_KEY`: Airtable Personal Access Token (starts with `pat...`)
+  - `FORM_TOKEN`: Shared secret for CSRF protection (generate: `openssl rand -hex 32`)
+  - `ENVIRONMENT`: `production` or `development`
+- **KV Binding** (Bindings tab):
+  - Namespace: `RATE_LIMIT` (used for rate limiting)
+
+### Next.js Environment Variables
+Add to `.env.local`:
+```
+NEXT_PUBLIC_FORM_TOKEN=<same-token-as-worker>
+```
+
+### Security Features
+
+| Feature | Implementation |
+|---------|---------------|
+| **Rate Limiting** | Cloudflare KV-based, 5 requests per IP per minute |
+| **Input Validation** | Email regex, required fields, field length limits |
+| **Honeypot** | Hidden `website` field, silently rejects if filled |
+| **Request Size Limit** | Rejects payloads > 10KB |
+| **CORS** | Environment-based (no localhost in production) |
+| **CSRF Protection** | `X-Form-Token` header with shared secret |
+| **Input Sanitization** | Strips HTML tags, script injections, trims whitespace |
+
+### Airtable Structure
+- **Workspace**: Arkustomers
+- **Table**: `leads`
+- **Columns** (all text type):
+  - `name`, `email`, `country`, `phone-number`, `service-of-interest`, `budget`, `notes`, `contact-method`, `language`
+
+### Form Fields Mapping
+| Form Field | Worker Payload Key | Airtable Column |
+|------------|-------------------|-----------------|
+| Name | `name` | `name` |
+| Email | `email` | `email` |
+| Country | `country` | `country` |
+| Phone | `phoneNumber` | `phone-number` |
+| Service | `serviceOfInterest` | `service-of-interest` |
+| Budget | `budget` | `budget` |
+| Message | `notes` | `notes` |
+| Preferred Method | `contactMethod` | `contact-method` |
+| Locale | `language` | `language` |
+| Honeypot | `website` | (not stored - used for bot detection) |
 
 ## Build Pipeline
 

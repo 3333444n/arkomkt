@@ -101,7 +101,11 @@
             "preferredMethod": "Méthode de réponse préférée",
             "emailMethod": "Email",
             "whatsappMethod": "WhatsApp",
-            "submit": "Envoyer"
+            "submit": "Envoyer",
+            "submitting": "Envoi en cours...",
+            "error": "Échec de l'envoi. Veuillez réessayer.",
+            "successTitle": "Merci de nous avoir contactés !",
+            "successMessage": "Nous vous recontacterons bientôt."
         }
     }
 }
