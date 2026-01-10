@@ -91,13 +91,13 @@ export default function ContactForm() {
             return service ? (service.name[locale as keyof typeof service.name] || service.name['es']) : serviceId;
         });
 
-        // Get budget value (radio button) and map to display text
+        // Get budget value (radio button) - send tier labels for language-independent data
         const budgetValue = formDataObj.get("budget") as string;
         const budgetMap: Record<string, string> = {
-            range1: "$6,000 - $12,000 MXN",
-            range2: "$12,000 - $25,000 MXN",
-            range3: "$25,000 - $50,000 MXN",
-            range4: "Más de $50,000 MXN"
+            range1: "Tier 1",
+            range2: "Tier 2",
+            range3: "Tier 3",
+            range4: "Tier 4"
         };
 
         // Get preferred contact method (radio button)
@@ -346,8 +346,8 @@ export default function ContactForm() {
                                             type="button"
                                             onClick={() => toggleService(category.id)}
                                             className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border-2 ${isSelected
-                                                    ? `${getCategoryColor(category.color)} border-static-black/20 text-static-black shadow-sm`
-                                                    : 'bg-static-white border-gray-mid/30 text-static-black/70 hover:border-gray-mid/50 hover:bg-gray-light/30'
+                                                ? `${getCategoryColor(category.color)} border-static-black/20 text-static-black shadow-sm`
+                                                : 'bg-static-white border-gray-mid/30 text-static-black/70 hover:border-gray-mid/50 hover:bg-gray-light/30'
                                                 }`}
                                         >
                                             {/* @ts-ignore - dynamic key based on locale */}
