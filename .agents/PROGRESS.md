@@ -55,3 +55,5 @@
 - [ ] Blog implementation
 - [ ] Dark mode toggle refinement
 EOF
+- [x] Add back button to project detail page (trilingual) - Sun Jan 11 12:56:29 CST 2026
+- [x] Make Projects section horizontally scrollable (snap + hide-scrollbar) - Sun Jan 11 13:03:22 CST 2026

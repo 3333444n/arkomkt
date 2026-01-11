@@ -112,5 +112,11 @@
             "selectBudget": "Please select a budget range",
             "selectMethod": "Please select a contact method"
         }
+    },
+    "ProjectDetail": {
+        "backToCatalog": "Back to projects catalog",
+        "client": "Client",
+        "outcome": "Outcome",
+        "tools": "Tools"
     }
 }

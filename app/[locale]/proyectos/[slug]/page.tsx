@@ -1,7 +1,8 @@
 import { getProject, getProjectSlugs, getToolLogo } from "@/lib/content";
 import { getValidImage } from "@/lib/utils";
 
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/config";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -23,6 +24,7 @@ export default async function ProjectDetailPage({
 }) {
     const { locale, slug } = await params;
     setRequestLocale(locale);
+    const t = await getTranslations({ locale, namespace: "ProjectDetail" });
 
     const project = await getProject(slug, locale);
 
@@ -56,6 +58,18 @@ export default async function ProjectDetailPage({
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
 
+                    <div className="absolute top-24 left-0 w-full z-20 px-6 md:px-12 lg:px-20 pointer-events-none">
+                        <div className="container mx-auto">
+                            <Link
+                                href="/proyectos"
+                                className="pointer-events-auto inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors group"
+                            >
+                                <span className="text-lg group-hover:-translate-x-1 transition-transform">←</span>
+                                <span className="border-b border-transparent group-hover:border-white pb-0.5 font-medium">{t('backToCatalog')}</span>
+                            </Link>
+                        </div>
+                    </div>
+
                     <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 lg:p-20">
                         <div className="container mx-auto">
                             {/* Breadcrumb-ish / Category Pills */}
@@ -81,7 +95,7 @@ export default async function ProjectDetailPage({
                             <div className="bg-card border border-border rounded-xl p-8 sticky top-24 space-y-8">
                                 {/* Client Info */}
                                 <div>
-                                    <h3 className="text-xs uppercase tracking-widest opacity-50 mb-3">Client</h3>
+                                    <h3 className="text-xs uppercase tracking-widest opacity-50 mb-3">{t('client')}</h3>
                                     <div className="flex items-center gap-3 mb-2 relative h-8">
                                         <Image
                                             src={getValidImage(project.clientLogo, project.slug, 5)}
@@ -97,7 +111,7 @@ export default async function ProjectDetailPage({
 
                                 {/* Outcome */}
                                 <div>
-                                    <h3 className="text-xs uppercase tracking-widest opacity-50 mb-3">Outcome</h3>
+                                    <h3 className="text-xs uppercase tracking-widest opacity-50 mb-3">{t('outcome')}</h3>
                                     <p className="text-2xl font-bold text-green-600 dark:text-green-400 font-serif">
                                         {project.outcome}
                                     </p>
@@ -106,7 +120,7 @@ export default async function ProjectDetailPage({
                                 {/* Tools */}
                                 {project.tools && project.tools.length > 0 && (
                                     <div>
-                                        <h3 className="text-xs uppercase tracking-widest opacity-50 mb-3">Tools</h3>
+                                        <h3 className="text-xs uppercase tracking-widest opacity-50 mb-3">{t('tools')}</h3>
                                         <div className="flex flex-wrap gap-3">
                                             {project.tools.map(tool => {
                                                 const logo = getToolLogo(tool);

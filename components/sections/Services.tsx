@@ -264,17 +264,6 @@ export default function Services() {
                         );
                     })}
                 </div>
-
-                <div className="mt-24 text-center">
-                    <motion.button
-                        className="bg-foreground text-background px-12 py-5 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-xl"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                    >
-                        {t("cta")}
-                    </motion.button>
-                </div>
             </div>
         </section>
     );

@@ -80,9 +80,9 @@ export default function ProjectCard({ project, locale, priority = false }: Proje
                 </div>
 
                 {/* Content */}
-                <div className="p-6 flex flex-col flex-grow relative">
+                <div className="p-5 md:p-6 flex flex-col flex-grow relative">
                     <div className="mb-auto">
-                        <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                        <h3 className="text-lg md:text-xl font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">
                             {project.title}
                         </h3>
                         <p className="text-muted-foreground text-sm line-clamp-3 mb-4">
